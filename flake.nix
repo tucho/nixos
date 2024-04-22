@@ -12,6 +12,7 @@
         ./configuration.nix
         ./boot
         ./hardware
+        ./localization
         ./misc
         ./networking
         ./users
