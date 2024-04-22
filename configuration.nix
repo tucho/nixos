@@ -10,11 +10,6 @@
     ./hardware-configuration.nix
   ];
 
-  networking = {
-    hostName = "basilio";
-    networkmanager.enable = true;
-  };
-
   time.timeZone = "America/Sao_Paulo";
 
   i18n.defaultLocale = "en_US.UTF-8";
