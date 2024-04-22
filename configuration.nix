@@ -5,11 +5,5 @@
 
   programs = {};
 
-  services = {
-    emacs = {
-      defaultEditor = true;
-      enable = true;
-      startWithGraphical = false;
-    };
-  };
+  services = {};
 }
