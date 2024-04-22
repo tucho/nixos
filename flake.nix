@@ -14,6 +14,7 @@
         ./hardware
         ./misc
         ./networking
+        ./users
       ];
     };
   };
