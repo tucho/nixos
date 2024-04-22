@@ -15,6 +15,7 @@
         ./localization
         ./misc
         ./networking
+        ./packages
         ./users
       ];
     };
