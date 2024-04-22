@@ -3,12 +3,7 @@
 {
   environment.systemPackages = with pkgs; [];
 
-  programs = {
-    zsh = {
-      enable = true;
-      syntaxHighlighting.enable = true;
-    };
-  };
+  programs = {};
 
   services = {
     emacs = {
