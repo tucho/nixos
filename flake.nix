@@ -11,6 +11,7 @@
       modules = [
         ./configuration.nix
         ./boot
+        ./hardware
         ./misc
         ./networking
       ];
