@@ -8,7 +8,7 @@
       "wheel"
       "networkmanager"
     ];
-    hashedPassword = "$y$j9T$igJErpwi3Dadb.uXi/nbV.$mc3NZJ57ZLQKTA8grhSkCfGoiesBma0OoKR2qeRtQx9";
+    hashedPassword = "$y$j9T$fWKEC/G7TMicTl/TngjXw1$bFcTfK2URzqNPG0A6l09PPZcZGNzt9jM/N7FWnJSc69";
     shell = pkgs.zsh;
   };
 }
