@@ -134,5 +134,69 @@
 
       syntaxHighlighting.enable = true;
     };
+
+    git = {
+      enable = true;
+
+      userName = "Marcel Campello";
+      userEmail = "marcel.campello@prafrentex.com.br";
+
+      aliases = {
+        logm = "log --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(cyan)%ci %C(bold yellow)%d %C(reset)%s'";
+        logma = "log --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(cyan)%ci %C(bold yellow)%d %C(reset)%s' --all";
+      };
+
+      extraConfig = {
+        core = {
+          whitespace = "warn,tab-in-indent";
+          editor = "emacsclient -nw";
+        };
+        init = {
+          templatedir = "~/.git-templates";
+	        defaultBranch = "main";
+        };
+        status = {
+          showUntrackedFiles = "all";
+        };
+        commit = {
+          gpgSign = true;
+        };
+        pull = {
+          ff = "only";
+        };
+        push = {
+	        default = "simple";
+        };
+        merge = {
+          conflictStyle = "diff3";
+        };
+        diff = {
+          algorithm = "histogram";
+        };
+        submodule = {
+	        recurse = true;
+        };
+        color = {
+          ui = "auto";
+        };
+        "color \"branch\"" = {
+	        current = "yellow reverse";
+	        local = "yellow";
+	        remote = "green";
+        };
+        "color \"diff\"" = {
+	        meta = "yellow bold";
+	        frag = "magenta bold";
+	        old = "red bold";
+	        new = "green bold";
+	        whitespace = "red reverse";
+        };
+        "color \"status\"" = {
+	        added = "yellow";
+	        changed = "green";
+	        untracked = "cyan";
+        };
+      };
+    };
   };
 }
