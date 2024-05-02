@@ -2,9 +2,6 @@
 
 {
   programs = {
-    zsh = {
-      enable = true;
-      syntaxHighlighting.enable = true;
-    };
+    zsh.enable = true;
   };
 }
