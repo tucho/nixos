@@ -152,7 +152,6 @@
           editor = "emacsclient -nw";
         };
         init = {
-          templatedir = "~/.git-templates";
           defaultBranch = "main";
         };
         status = {
