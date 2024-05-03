@@ -153,7 +153,7 @@
         };
         init = {
           templatedir = "~/.git-templates";
-	        defaultBranch = "main";
+          defaultBranch = "main";
         };
         status = {
           showUntrackedFiles = "all";
@@ -165,7 +165,7 @@
           ff = "only";
         };
         push = {
-	        default = "simple";
+          default = "simple";
         };
         merge = {
           conflictStyle = "diff3";
@@ -174,27 +174,27 @@
           algorithm = "histogram";
         };
         submodule = {
-	        recurse = true;
+          recurse = true;
         };
         color = {
           ui = "auto";
         };
         "color \"branch\"" = {
-	        current = "yellow reverse";
-	        local = "yellow";
-	        remote = "green";
+          current = "yellow reverse";
+          local = "yellow";
+          remote = "green";
         };
         "color \"diff\"" = {
-	        meta = "yellow bold";
-	        frag = "magenta bold";
-	        old = "red bold";
-	        new = "green bold";
-	        whitespace = "red reverse";
+          meta = "yellow bold";
+          frag = "magenta bold";
+          old = "red bold";
+          new = "green bold";
+          whitespace = "red reverse";
         };
         "color \"status\"" = {
-	        added = "yellow";
-	        changed = "green";
-	        untracked = "cyan";
+          added = "yellow";
+          changed = "green";
+          untracked = "cyan";
         };
       };
     };
