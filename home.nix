@@ -214,9 +214,10 @@
         # Display long key IDs
         keyid-format =  "long";
 
-        # List keys and subkeys along with their fingerprints
+        # List keys and subkeys along with their fingerprints and keygrips
         with-fingerprint = true;
         with-subkey-fingerprint = true;
+        with-keygrip = true;
 
         # Displays the validity of the keys
         list-options = "show-uid-validity";
