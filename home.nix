@@ -197,5 +197,31 @@
         };
       };
     };
+
+    gpg = {
+      enable = true;
+      homedir = "${config.xdg.dataHome}/gnupg";
+      settings = {
+        # Get rid of the copyright notice
+        no-greeting = true;
+
+        # Disable inclusion of the version string in ASCII armored output
+        no-emit-version = true;
+
+        # Disable comment string in clear text signatures and ASCII armored messages
+        no-comments = true;
+
+        # Display long key IDs
+        keyid-format =  "long";
+
+        # List keys and subkeys along with their fingerprints
+        with-fingerprint = true;
+        with-subkey-fingerprint = true;
+
+        # Displays the validity of the keys
+        list-options = "show-uid-validity";
+        verify-options = "show-uid-validity";
+      };
+    };
   };
 }
