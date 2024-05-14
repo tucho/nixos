@@ -15,6 +15,7 @@
       system = "x86_64-linux";
       modules = [
         ./boot
+        ./fonts
         ./hardware
         ./kde
         ./localization
