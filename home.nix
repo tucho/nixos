@@ -29,6 +29,7 @@
   services = {
     gpg-agent = {
       enable = true;
+      enableZshIntegration = true;
       enableSshSupport = true;
       defaultCacheTtl = 300;
       maxCacheTtl = 3600;
@@ -140,18 +141,6 @@
         # Set prompt
         setopt prompt_subst
         PROMPT="''${DATE_TIME}''${USER_HOST}''${GIT_PROMPT}''${NEWLINE}''${CURR_PATH}"
-        
-        # Configure pinentry to use the correct TTY
-        export GPG_TTY="$(tty)"
-        gpg-connect-agent updatestartuptty /bye > /dev/null
-      '';
-
-      envExtra = ''
-        # Emulate OpenSSH agent
-        unset SSH_AGENT_PID
-        if [ "''${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-           export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-        fi
       '';
 
       syntaxHighlighting.enable = true;
