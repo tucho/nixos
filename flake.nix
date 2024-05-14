@@ -20,6 +20,7 @@
         ./misc
         ./networking
         ./packages
+        ./sound
         ./users
 
         home-manager.nixosModules.home-manager {
