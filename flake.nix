@@ -16,6 +16,7 @@
       modules = [
         ./boot
         ./hardware
+        ./kde
         ./localization
         ./misc
         ./networking
