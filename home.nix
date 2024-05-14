@@ -234,5 +234,17 @@
         verify-options = "show-uid-validity";
       };
     };
+
+    firefox = {
+      enable = true;
+      profiles = {
+        default = {
+          isDefault = true;
+          settings = {
+            "browser.translations.automaticallyPopup" = false;
+          };
+        };
+      };
+    };
   };
 }
