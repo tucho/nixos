@@ -45,7 +45,7 @@
     emacs = {
       enable = true;
       defaultEditor = true;
-      startWithUserSession = true;
+      startWithUserSession = "graphical";
     };
   };
 
