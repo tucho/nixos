@@ -164,8 +164,7 @@
       userEmail = "marcel.campello@prafrentex.com.br";
 
       aliases = {
-        logm = "log --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(cyan)%ci %C(bold yellow)%d %C(reset)%s'";
-        logma = "log --graph --pretty=format:'%C(yellow)%h %C(green)%an %C(cyan)%ci %C(bold yellow)%d %C(reset)%s' --all";
+        logg = "log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ai%C(reset) %C(auto)%d%C(reset) %C(green)%an%C(reset) %C(magenta)G?%C(reset) %s'";
       };
 
       extraConfig = {
