@@ -3,5 +3,6 @@
 {
   imports = [
     ./plasma.nix
+    ./applications.nix
   ];
 }
