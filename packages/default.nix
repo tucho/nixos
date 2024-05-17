@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./calibre.nix
     ./emacs.nix
     ./git.nix
     ./libreoffice.nix
