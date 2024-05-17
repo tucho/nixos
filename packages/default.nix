@@ -7,6 +7,7 @@
     ./git.nix
     ./libreoffice.nix
     ./ripgrep.nix
+    ./tree.nix
     ./zsh.nix
   ];
 }
