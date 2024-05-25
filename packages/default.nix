@@ -5,6 +5,7 @@
     ./calibre.nix
     ./emacs.nix
     ./git.nix
+    ./gnupg.nix
     ./libreoffice.nix
     ./ripgrep.nix
     ./tree.nix
