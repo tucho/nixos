@@ -41,12 +41,6 @@
         allow-loopback-pinentry
       '';
     };
-
-    emacs = {
-      enable = true;
-      defaultEditor = true;
-      startWithUserSession = "graphical";
-    };
   };
 
   programs = {
