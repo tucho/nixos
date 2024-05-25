@@ -42,9 +42,9 @@
         maxCacheTtlSsh = 3600;
         pinentryPackage = pkgs.pinentry-curses;
         extraConfig = ''
-        allow-emacs-pinentry
-        allow-loopback-pinentry
-      '';
+          allow-emacs-pinentry
+          allow-loopback-pinentry
+        '';
       };
     };
   };
