@@ -4,6 +4,7 @@
   imports = [
     ./calibre.nix
     ./emacs.nix
+    ./firefox.nix
     ./git.nix
     ./gnupg.nix
     ./libreoffice.nix
