@@ -30,7 +30,6 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.marcel = import ./home.nix;
           };
         }
       ];
