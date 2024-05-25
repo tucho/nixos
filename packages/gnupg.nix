@@ -45,6 +45,9 @@
           allow-emacs-pinentry
           allow-loopback-pinentry
         '';
+        sshKeys = [
+          "E7B465E1FA43A0A040C812CC35F8E03AFAA0BDAB"
+        ];
       };
     };
   };
