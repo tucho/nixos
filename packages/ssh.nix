@@ -6,6 +6,14 @@
       ssh = {
         enable = true;
         forwardAgent = true;
+
+        matchBlocks = {
+          "*" = {
+            match = ''
+              host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"
+            '';
+          };
+        };
       };
     };
   };
