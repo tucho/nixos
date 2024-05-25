@@ -25,10 +25,4 @@
   };
 
   xdg.enable = true;
-
-  programs = {
-    htop = {
-      enable = true;
-    };
-  };
 }

@@ -7,6 +7,7 @@
     ./firefox.nix
     ./git.nix
     ./gnupg.nix
+    ./htop.nix
     ./libreoffice.nix
     ./ripgrep.nix
     ./tree.nix
