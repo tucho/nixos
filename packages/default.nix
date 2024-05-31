@@ -13,6 +13,7 @@
     ./musescore.nix
     ./ripgrep.nix
     ./ssh.nix
+    ./tor-browser.nix
     ./tree.nix
     ./zsh.nix
   ];
