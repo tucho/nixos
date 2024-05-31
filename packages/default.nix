@@ -10,6 +10,7 @@
     ./gnupg.nix
     ./htop.nix
     ./libreoffice.nix
+    ./musescore.nix
     ./ripgrep.nix
     ./ssh.nix
     ./tree.nix
