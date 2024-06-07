@@ -6,6 +6,7 @@
     ./direnv.nix
     ./emacs.nix
     ./firefox.nix
+    ./gimp.nix
     ./git.nix
     ./gnupg.nix
     ./htop.nix
