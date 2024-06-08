@@ -4,6 +4,7 @@
   imports = [
     ./calibre.nix
     ./direnv.nix
+    ./discord.nix
     ./emacs.nix
     ./firefox.nix
     ./gimp.nix
