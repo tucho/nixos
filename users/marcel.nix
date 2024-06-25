@@ -29,7 +29,7 @@
         createDirectories = true;
 
         documents = "${config.home-manager.users.marcel.home.homeDirectory}/documents";
-        download = "${config.home-manager.users.marcel.home.homeDirectory}/download";
+        download = "${config.home-manager.users.marcel.home.homeDirectory}/downloads";
         music = "${config.home-manager.users.marcel.home.homeDirectory}/music";
         pictures = "${config.home-manager.users.marcel.home.homeDirectory}/pictures";
         videos = "${config.home-manager.users.marcel.home.homeDirectory}/videos";
