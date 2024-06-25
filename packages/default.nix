@@ -12,6 +12,7 @@
     ./gnupg.nix
     ./htop.nix
     ./libreoffice.nix
+    ./lilypond.nix
     ./musescore.nix
     ./ripgrep.nix
     ./ssh.nix
