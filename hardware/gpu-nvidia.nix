@@ -14,7 +14,7 @@
         reverseSync.enable = true;
       };
     };
-    opengl = {
+    graphics = {
       enable = true;
     };
   };
