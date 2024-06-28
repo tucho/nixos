@@ -36,10 +36,10 @@
         enable = true;
         enableZshIntegration = true;
         enableSshSupport = true;
-        defaultCacheTtl = 300;
-        maxCacheTtl = 3600;
-        defaultCacheTtlSsh = 300;
-        maxCacheTtlSsh = 3600;
+        defaultCacheTtl = 3600;
+        maxCacheTtl = 14400;
+        defaultCacheTtlSsh = 3600;
+        maxCacheTtlSsh = 14400;
         pinentryPackage = pkgs.pinentry-curses;
         extraConfig = ''
           allow-emacs-pinentry
