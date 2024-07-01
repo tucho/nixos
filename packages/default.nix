@@ -16,6 +16,7 @@
     ./musescore.nix
     ./ripgrep.nix
     ./ssh.nix
+    ./steam.nix
     ./tor-browser.nix
     ./tree.nix
     ./zsh.nix
