@@ -6,5 +6,6 @@
     ./encrypted-storage.nix
     ./kernel-modules.nix
     ./plymouth.nix
+    ./tmp.nix
   ];
 }
