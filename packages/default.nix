@@ -14,6 +14,7 @@
     ./libreoffice.nix
     ./lilypond.nix
     ./musescore.nix
+    ./nvtop.nix
     ./ripgrep.nix
     ./ssh.nix
     ./steam.nix
