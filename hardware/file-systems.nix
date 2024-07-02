@@ -4,19 +4,38 @@
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/root";
-      fsType = "ext4";
+      fsType = "btrfs";
+      options = [
+        "subvol=root"
+        "compress=zstd"
+      ];
+    };
+
+    "/nix" = {
+      device = "/dev/disk/by-label/root";
+      fsType = "btrfs";
+      options = [
+        "subvol=nix"
+        "compress=zstd"
+        "noatime"
+      ];
     };
 
     "/home" = {
       device = "/dev/disk/by-label/home";
-      fsType = "ext4";
+      fsType = "btrfs";
+      options = [
+        "subvol=home"
+        "compress=zstd"
+      ];
     };
 
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = [
-        "fmask=0077" "dmask=0077"
+        "fmask=0077"
+        "dmask=0077"
       ];
     };
   };
