@@ -3,7 +3,7 @@
 {
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/top_level";
       fsType = "btrfs";
       options = [
         "subvol=root"
@@ -12,7 +12,7 @@
     };
 
     "/nix" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/top_level";
       fsType = "btrfs";
       options = [
         "subvol=nix"
@@ -22,7 +22,7 @@
     };
 
     "/home" = {
-      device = "/dev/disk/by-label/home";
+      device = "/dev/disk/by-label/top_level";
       fsType = "btrfs";
       options = [
         "subvol=home"
