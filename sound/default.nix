@@ -9,5 +9,4 @@
     wireplumber.enable = true;
   };
   security.rtkit.enable = true;
-  sound.enable = false; # disable pulseaudio
 }
