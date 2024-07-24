@@ -11,6 +11,7 @@
     ./git.nix
     ./gnupg.nix
     ./htop.nix
+    ./latex.nix
     ./libreoffice.nix
     ./lilypond.nix
     ./musescore.nix
