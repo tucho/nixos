@@ -16,6 +16,7 @@
     ./lilypond.nix
     ./musescore.nix
     ./nvtop.nix
+    ./pass.nix
     ./ripgrep.nix
     ./ssh.nix
     ./steam.nix
