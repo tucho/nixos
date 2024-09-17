@@ -23,6 +23,7 @@
     ./tor-browser.nix
     ./tree.nix
     ./virtualbox.nix
+    ./zoom.nix
     ./zsh.nix
   ];
 }
