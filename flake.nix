@@ -17,7 +17,7 @@
         ./boot
         ./fonts
         ./hardware
-        ./kde
+        ./hyprland
         ./localization
         ./misc
         ./networking
