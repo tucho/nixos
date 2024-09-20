@@ -5,12 +5,14 @@
     systemPackages = with pkgs; [
       blueman
       dunst
+      hyprcursor
       hyprpaper
       kitty
       networkmanagerapplet
       paprefs
       pasystray
       pavucontrol
+      pcmanfm
       rofi-wayland
     ];
   };
