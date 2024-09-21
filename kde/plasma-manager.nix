@@ -229,6 +229,52 @@
         "services/systemsettings.desktop"."_launch" = "Meta+S";
         yakuake.toggle-window-state = "Meta+Return";
       };
+      
+      configFile = {
+        kded5rc = {
+          Module-browserintegrationreminder.autoload = false;
+          Module-device_automounter.autoload = false;
+        };
+
+        kdeglobals = {
+          General = {
+            TerminalApplication = "yakuake";
+            TerminalService = "org.kde.yakuake.desktop";
+            XftHintStyle = "hintslight";
+            XftSubPixel = "none";
+          };
+        };
+
+        kiorc = {
+          Confirmations = {
+            ConfirmDelete = true;
+            ConfirmEmptyTrash = true;
+          };
+        };
+        
+        ksmserverrc = {
+          General = {
+            confirmLogout = false;
+            loginMode = "emptySession";
+          };
+        };
+        
+        kwalletrc = {
+          Wallet = {
+            "First Use" = false;
+          };
+        };
+
+        kwinrc = {
+          Windows = {
+            Placement = "Smart";
+          };
+          # the following configuration is not working
+          # Xwayland = {
+          #   Scale = 1.4;
+          # };
+        };
+      };
     };
   };
 }
