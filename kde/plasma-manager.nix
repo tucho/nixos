@@ -116,6 +116,54 @@
           }
         ];
       };
+      
+      powerdevil = {
+        AC = {
+          autoSuspend.action = "nothing";
+          powerButtonAction = "showLogoutScreen";
+          whenLaptopLidClosed = "hibernate";
+          inhibitLidActionWhenExternalMonitorConnected = false;
+          dimDisplay = {
+            enable = true;
+            idleTimeOut = 1800;
+          };
+
+          turnOffDisplay = {
+            idleTimeout = 3600;
+            idleTimeoutWhenLocked = 900;
+          };
+        };
+        
+        battery = {
+          autoSuspend.action = "nothing";
+          powerButtonAction = "showLogoutScreen";
+          whenLaptopLidClosed = "hibernate";
+          inhibitLidActionWhenExternalMonitorConnected = false;
+          dimDisplay = {
+            enable = true;
+            idleTimeOut = 300;
+          };
+          turnOffDisplay = {
+            idleTimeout = 600;
+            idleTimeoutWhenLocked = 150;
+          };
+        };
+        
+        lowBattery = {
+          autoSuspend.action = "nothing";
+          powerButtonAction = "showLogoutScreen";
+          whenLaptopLidClosed = "hibernate";
+          inhibitLidActionWhenExternalMonitorConnected = false;
+          dimDisplay = {
+            enable = true;
+            idleTimeOut = 300;
+          };
+          turnOffDisplay = {
+            idleTimeout = 600;
+            idleTimeoutWhenLocked = 150;
+          };
+        };
+      };
     };
   };
 }
