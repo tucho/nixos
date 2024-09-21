@@ -44,6 +44,19 @@
           pointSize = 10;
         };
       };
+      
+      kwin = {
+        virtualDesktops = {
+          number = 4;
+          rows = 1;
+          names = [
+            "Desktop 1"
+            "Desktop 2"
+            "Desktop 3"
+            "Desktop 4"
+          ];
+        };
+      };
     };
   };
 }
