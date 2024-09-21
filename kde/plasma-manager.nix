@@ -78,6 +78,44 @@
           ];
         }
       ];
+      
+      input = {
+        keyboard = {
+          layouts = [
+            {
+              layout = "us";
+            }
+            {
+              layout = "us";
+              variant = "intl";
+            }
+          ];
+        };
+        
+        mice = [
+          {
+            name = "Logitech M720 Triathlon";
+            vendorId = "046d";
+            productId = "405e";
+            enable = true;
+            naturalScroll = true;
+          }
+        ];
+        
+        touchpads = [
+          {
+            name = "DELL0949:00 04F3:30CB Touchpad";
+            vendorId = "04f3";
+            productId = "30cb";
+            enable = true;
+            disableWhileTyping = true;
+            tapToClick = true;
+            twoFingerTap = "rightClick";
+            scrollMethod = "twoFingers";
+            naturalScroll = true;
+          }
+        ];
+      };
     };
   };
 }
