@@ -116,6 +116,19 @@
           }
         ];
       };
+
+      kscreenlocker = {
+        autoLock = false;
+        lockOnResume = true;
+        lockOnStartup = false;
+        passwordRequired = true;
+        passwordRequiredDelay = 5;
+        appearance = {
+          alwaysShowClock = false;
+          showMediaControls = false;
+          wallpaper = "${config.home-manager.users.marcel.xdg.userDirs.pictures}/wallpapers/push.png";
+        };
+      };
       
       powerdevil = {
         AC = {
@@ -176,7 +189,11 @@
           decrease_microphone_volume = "Alt+Volume Down";
           mic_mute = "Alt+Volume Mute";
         };
-
+        
+        ksmserver = {
+          "Lock Session" = "Meta+Shift+L";
+        };
+        
         kwin = {
           "Switch to Desktop 1" = "Meta+1";
           "Switch to Desktop 2" = "Meta+2";
