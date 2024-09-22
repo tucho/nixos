@@ -138,7 +138,7 @@
           inhibitLidActionWhenExternalMonitorConnected = false;
           dimDisplay = {
             enable = true;
-            idleTimeOut = 1800;
+            idleTimeout = 1800;
           };
 
           turnOffDisplay = {
@@ -154,7 +154,7 @@
           inhibitLidActionWhenExternalMonitorConnected = false;
           dimDisplay = {
             enable = true;
-            idleTimeOut = 300;
+            idleTimeout = 300;
           };
           turnOffDisplay = {
             idleTimeout = 600;
@@ -169,7 +169,7 @@
           inhibitLidActionWhenExternalMonitorConnected = false;
           dimDisplay = {
             enable = true;
-            idleTimeOut = 300;
+            idleTimeout = 300;
           };
           turnOffDisplay = {
             idleTimeout = 600;
