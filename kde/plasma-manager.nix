@@ -110,7 +110,7 @@
             enable = true;
             disableWhileTyping = true;
             tapToClick = true;
-            twoFingerTap = "rightClick";
+            twoFingerTap = "middleClick";
             scrollMethod = "twoFingers";
             naturalScroll = true;
           }
