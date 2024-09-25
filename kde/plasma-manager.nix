@@ -4,7 +4,7 @@
   home-manager.users.marcel = {
     programs.plasma = {
       enable = true;
-      overrideConfig = true;
+      overrideConfig = false;
       
       workspace = {
         clickItemTo = "open";
