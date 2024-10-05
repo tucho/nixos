@@ -126,7 +126,6 @@
                 };
               };
             }
-            "org.kde.plasma.showdesktop"
           ];
         }
       ];
