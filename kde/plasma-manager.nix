@@ -77,7 +77,22 @@
             }
             "org.kde.plasma.marginsseparator"
             "org.kde.plasma.systemtray"
-            "org.kde.plasma.digitalclock"
+            {
+              digitalClock = {
+                time = {
+                  showSeconds = "always";
+                  format = "24h";
+                };
+                date = {
+                  enable = true;
+                  format = "isoDate";
+                  position = "besideTime";
+                };
+                calendar = {
+                  firstDayOfWeek = "sunday";
+                };
+              };
+            }
             "org.kde.plasma.showdesktop"
           ];
         }
