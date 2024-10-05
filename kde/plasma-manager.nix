@@ -107,6 +107,7 @@
             {
               layout = "us";
               variant = "intl";
+              displayName = "usi";
             }
           ];
         };
