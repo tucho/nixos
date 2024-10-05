@@ -265,6 +265,7 @@
         "services/org.kde.kcalc.desktop"."_launch" = "Meta+C";
         "services/systemsettings.desktop"."_launch" = "Meta+S";
         yakuake.toggle-window-state = "Meta+Return";
+        "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+K";
       };
       
       configFile = {
