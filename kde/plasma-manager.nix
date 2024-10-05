@@ -80,7 +80,6 @@
               systemTray = {
                 items = {
                   shown = [
-                    "org.kde.plasma.battery"
                     "org.kde.plasma.keyboardlayout"
                     "org.kde.plasma.networkmanagement"
                     "org.kde.plasma.volume"
@@ -92,7 +91,6 @@
                   ];
                   extra = [
                     # -- always shown --
-                    "org.kde.plasma.battery"
                     "org.kde.plasma.keyboardlayout"
                     "org.kde.plasma.networkmanagement"
                     "org.kde.plasma.volume"
@@ -101,6 +99,7 @@
                     "org.kde.plasma.brightness"
                     "org.kde.plasma.clipboard"
                     # -- shown when relevant
+                    "org.kde.plasma.battery"
                     "org.kde.plasma.bluetooth"
                     "org.kde.plasma.cameraindicator"
                     "org.kde.plasma.devicenotifier"
