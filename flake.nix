@@ -10,7 +10,7 @@
     };
 
     plasma-manager = {
-      url = "github:nix-community/plasma-manager";
+      url = "git+file:///home/marcel/devlab/nixoslab/forks/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
