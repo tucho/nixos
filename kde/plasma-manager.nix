@@ -184,7 +184,7 @@
       
       powerdevil = {
         AC = {
-          autoSuspend.action = "nothing";
+          autoSuspend.action = "doNothing";
           powerButtonAction = "showLogoutScreen";
           whenLaptopLidClosed = "hibernate";
           inhibitLidActionWhenExternalMonitorConnected = false;
@@ -200,7 +200,7 @@
         };
         
         battery = {
-          autoSuspend.action = "nothing";
+          autoSuspend.action = "doNothing";
           powerButtonAction = "showLogoutScreen";
           whenLaptopLidClosed = "hibernate";
           inhibitLidActionWhenExternalMonitorConnected = false;
@@ -215,7 +215,7 @@
         };
         
         lowBattery = {
-          autoSuspend.action = "nothing";
+          autoSuspend.action = "doNothing";
           powerButtonAction = "showLogoutScreen";
           whenLaptopLidClosed = "hibernate";
           inhibitLidActionWhenExternalMonitorConnected = false;
