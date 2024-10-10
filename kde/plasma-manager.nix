@@ -184,48 +184,77 @@
       
       powerdevil = {
         AC = {
-          autoSuspend.action = "doNothing";
-          powerButtonAction = "showLogoutScreen";
-          whenLaptopLidClosed = "hibernate";
-          inhibitLidActionWhenExternalMonitorConnected = false;
-          dimDisplay = {
-            enable = true;
-            idleTimeout = 1800;
+          suspendSession = {
+            afterAPeriodOfInactivity = {
+              action = "doNothing";
+            };
+            whenPowerButtonPressed = "showLogoutScreen";
+            whenLaptopLidClosed = "hibernate";
+            evenWhenAnExternalMonitorIsConnected = true;
           };
-
-          turnOffDisplay = {
-            idleTimeout = 3600;
-            idleTimeoutWhenLocked = 900;
+          displayAndBrightness = {
+            changeScreenBrightness = {
+              enable = true;
+              percentage = 100;
+            };
+            dimAutomatically = {
+              enable = true;
+              idleTimeout = 1800;
+            };
+            turnOffScreen = {
+              idleTimeout = 3600;
+              idleTimeoutWhenLocked = 900;
+            };
           };
         };
         
         battery = {
-          autoSuspend.action = "doNothing";
-          powerButtonAction = "showLogoutScreen";
-          whenLaptopLidClosed = "hibernate";
-          inhibitLidActionWhenExternalMonitorConnected = false;
-          dimDisplay = {
-            enable = true;
-            idleTimeout = 300;
+          suspendSession = {
+            afterAPeriodOfInactivity = {
+              action = "doNothing";
+            };
+            whenPowerButtonPressed = "showLogoutScreen";
+            whenLaptopLidClosed = "hibernate";
+            evenWhenAnExternalMonitorIsConnected = true;
           };
-          turnOffDisplay = {
-            idleTimeout = 600;
-            idleTimeoutWhenLocked = 150;
+          displayAndBrightness = {
+            changeScreenBrightness = {
+              enable = true;
+              percentage = 70;
+            };
+            dimAutomatically = {
+              enable = true;
+              idleTimeout = 300;
+            };
+            turnOffScreen = {
+              idleTimeout = 600;
+              idleTimeoutWhenLocked = 150;
+            };
           };
         };
         
         lowBattery = {
-          autoSuspend.action = "doNothing";
-          powerButtonAction = "showLogoutScreen";
-          whenLaptopLidClosed = "hibernate";
-          inhibitLidActionWhenExternalMonitorConnected = false;
-          dimDisplay = {
-            enable = true;
-            idleTimeout = 300;
+          suspendSession = {
+            afterAPeriodOfInactivity = {
+              action = "doNothing";
+            };
+            whenPowerButtonPressed = "showLogoutScreen";
+            whenLaptopLidClosed = "hibernate";
+            evenWhenAnExternalMonitorIsConnected = true;
           };
-          turnOffDisplay = {
-            idleTimeout = 600;
-            idleTimeoutWhenLocked = 150;
+          displayAndBrightness = {
+            changeScreenBrightness = {
+              enable = true;
+              percentage = 30;
+            };
+            dimAutomatically = {
+              enable = true;
+              idleTimeout = 120;
+            };
+            turnOffScreen = {
+              idleTimeout = 300;
+              idleTimeoutWhenLocked = 60;
+            };
           };
         };
       };
