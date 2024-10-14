@@ -306,6 +306,8 @@
           atCriticalLevel = "hibernate";
           lowLevelForPeripheralDevice = 10;
         };
+
+        otherSettings.pauseMediaPlayersWhenSuspending = true;
       };
       
       shortcuts = {
