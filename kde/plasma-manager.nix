@@ -209,6 +209,17 @@
               percentage = 100;
             };
           };
+          otherSettings = {
+            switchToPowerProfile = "performance";
+            runCustomScripts = {
+              whenEnteringOnACPowerState = "echo 'entering On AC Power'";
+              whenExitingOnACPowerState = "echo 'exiting On AC Power'";
+              afterAPeriodOfInactivity = {
+                script = "echo 'idle while On AC Power'";
+                idleTimeout = 1800;
+              };
+            };
+          };
         };
         
         battery = {
@@ -237,6 +248,17 @@
               percentage = 50;
             };
           };
+          otherSettings = {
+            switchToPowerProfile = "balanced";
+            runCustomScripts = {
+              whenEnteringOnBatteryPowerState = "echo 'entering On Battery Power'";
+              whenExitingOnBatteryPowerState = "echo 'exiting On Battery Power'";
+              afterAPeriodOfInactivity = {
+                script = "echo 'idle while On Battery Power'";
+                idleTimeout = 1800;
+              };
+            };
+          };
         };
         
         lowBattery = {
@@ -263,6 +285,17 @@
             changeKeyboardBrightness = {
               enable = true;
               percentage = 0;
+            };
+          };
+          otherSettings = {
+            switchToPowerProfile = "powerSave";
+            runCustomScripts = {
+              whenEnteringOnLowBatteryPowerState = "echo 'entering On Low Battery Power'";
+              whenExitingOnLowBatteryPowerState = "echo 'exiting On Low Battery Power'";
+              afterAPeriodOfInactivity = {
+                script = "echo 'idle while On Low Battery Power'";
+                idleTimeout = 1800;
+              };
             };
           };
         };
