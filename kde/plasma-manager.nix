@@ -204,6 +204,10 @@
               idleTimeout = 3600;
               idleTimeoutWhenLocked = 900;
             };
+            changeKeyboardBrightness = {
+              enable = true;
+              percentage = 100;
+            };
           };
         };
         
@@ -228,6 +232,10 @@
               idleTimeout = 600;
               idleTimeoutWhenLocked = 150;
             };
+            changeKeyboardBrightness = {
+              enable = true;
+              percentage = 50;
+            };
           };
         };
         
@@ -251,6 +259,10 @@
             turnOffScreen = {
               idleTimeout = 300;
               idleTimeoutWhenLocked = 60;
+            };
+            changeKeyboardBrightness = {
+              enable = true;
+              percentage = 0;
             };
           };
         };
