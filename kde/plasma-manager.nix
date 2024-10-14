@@ -299,6 +299,13 @@
             };
           };
         };
+
+        batteryLevels = {
+          lowLevel = 20;
+          criticalLevel = 10;
+          atCriticalLevel = "hibernate";
+          lowLevelForPeripheralDevice = 10;
+        };
       };
       
       shortcuts = {
