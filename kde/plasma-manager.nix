@@ -198,7 +198,6 @@
               percentage = 100;
             };
             dimAutomatically = {
-              enable = true;
               idleTimeout = 1800;
             };
             turnOffScreen = {
@@ -223,7 +222,6 @@
               percentage = 70;
             };
             dimAutomatically = {
-              enable = true;
               idleTimeout = 300;
             };
             turnOffScreen = {
@@ -248,7 +246,6 @@
               percentage = 30;
             };
             dimAutomatically = {
-              enable = true;
               idleTimeout = 120;
             };
             turnOffScreen = {
