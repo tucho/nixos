@@ -28,6 +28,7 @@
         ./misc
         ./networking
         ./packages
+        ./printing
         ./sound
         ./users
 
