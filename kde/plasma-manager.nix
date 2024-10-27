@@ -184,50 +184,130 @@
       
       powerdevil = {
         AC = {
-          autoSuspend.action = "nothing";
-          powerButtonAction = "showLogoutScreen";
-          whenLaptopLidClosed = "hibernate";
-          inhibitLidActionWhenExternalMonitorConnected = false;
-          dimDisplay = {
-            enable = true;
-            idleTimeout = 1800;
+          suspendSession = {
+            afterAPeriodOfInactivity = {
+              action = "doNothing";
+            };
+            whenPowerButtonPressed = "showLogoutScreen";
+            whenLaptopLidClosed = "hibernate";
+            evenWhenAnExternalMonitorIsConnected = true;
           };
-
-          turnOffDisplay = {
-            idleTimeout = 3600;
-            idleTimeoutWhenLocked = 900;
+          displayAndBrightness = {
+            changeScreenBrightness = {
+              enable = true;
+              percentage = 100;
+            };
+            dimAutomatically = {
+              idleTimeout = 1800;
+            };
+            turnOffScreen = {
+              idleTimeout = 3600;
+              idleTimeoutWhenLocked = 900;
+            };
+            changeKeyboardBrightness = {
+              enable = true;
+              percentage = 100;
+            };
+          };
+          otherSettings = {
+            switchToPowerProfile = "performance";
+            runCustomScripts = {
+              whenEnteringOnACPowerState = "echo 'entering On AC Power'";
+              whenExitingOnACPowerState = "echo 'exiting On AC Power'";
+              afterAPeriodOfInactivity = {
+                script = "echo 'idle while On AC Power'";
+                idleTimeout = 1800;
+              };
+            };
           };
         };
         
         battery = {
-          autoSuspend.action = "nothing";
-          powerButtonAction = "showLogoutScreen";
-          whenLaptopLidClosed = "hibernate";
-          inhibitLidActionWhenExternalMonitorConnected = false;
-          dimDisplay = {
-            enable = true;
-            idleTimeout = 300;
+          suspendSession = {
+            afterAPeriodOfInactivity = {
+              action = "doNothing";
+            };
+            whenPowerButtonPressed = "showLogoutScreen";
+            whenLaptopLidClosed = "hibernate";
+            evenWhenAnExternalMonitorIsConnected = true;
           };
-          turnOffDisplay = {
-            idleTimeout = 600;
-            idleTimeoutWhenLocked = 150;
+          displayAndBrightness = {
+            changeScreenBrightness = {
+              enable = true;
+              percentage = 70;
+            };
+            dimAutomatically = {
+              idleTimeout = 300;
+            };
+            turnOffScreen = {
+              idleTimeout = 600;
+              idleTimeoutWhenLocked = 150;
+            };
+            changeKeyboardBrightness = {
+              enable = true;
+              percentage = 50;
+            };
+          };
+          otherSettings = {
+            switchToPowerProfile = "balanced";
+            runCustomScripts = {
+              whenEnteringOnBatteryPowerState = "echo 'entering On Battery Power'";
+              whenExitingOnBatteryPowerState = "echo 'exiting On Battery Power'";
+              afterAPeriodOfInactivity = {
+                script = "echo 'idle while On Battery Power'";
+                idleTimeout = 1800;
+              };
+            };
           };
         };
         
         lowBattery = {
-          autoSuspend.action = "nothing";
-          powerButtonAction = "showLogoutScreen";
-          whenLaptopLidClosed = "hibernate";
-          inhibitLidActionWhenExternalMonitorConnected = false;
-          dimDisplay = {
-            enable = true;
-            idleTimeout = 300;
+          suspendSession = {
+            afterAPeriodOfInactivity = {
+              action = "doNothing";
+            };
+            whenPowerButtonPressed = "showLogoutScreen";
+            whenLaptopLidClosed = "hibernate";
+            evenWhenAnExternalMonitorIsConnected = true;
           };
-          turnOffDisplay = {
-            idleTimeout = 600;
-            idleTimeoutWhenLocked = 150;
+          displayAndBrightness = {
+            changeScreenBrightness = {
+              enable = true;
+              percentage = 30;
+            };
+            dimAutomatically = {
+              idleTimeout = 120;
+            };
+            turnOffScreen = {
+              idleTimeout = 300;
+              idleTimeoutWhenLocked = 60;
+            };
+            changeKeyboardBrightness = {
+              enable = true;
+              percentage = 0;
+            };
+          };
+          otherSettings = {
+            switchToPowerProfile = "powerSave";
+            runCustomScripts = {
+              whenEnteringOnLowBatteryPowerState = "echo 'entering On Low Battery Power'";
+              whenExitingOnLowBatteryPowerState = "echo 'exiting On Low Battery Power'";
+              afterAPeriodOfInactivity = {
+                script = "echo 'idle while On Low Battery Power'";
+                idleTimeout = 1800;
+              };
+            };
           };
         };
+
+        batteryLevels = {
+          lowLevel = 20;
+          criticalLevel = 10;
+          atCriticalLevel = "hibernate";
+          lowLevelForPeripheralDevice = 10;
+        };
+
+        otherSettings.pauseMediaPlayersWhenSuspending = true;
       };
       
       shortcuts = {
