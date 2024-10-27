@@ -10,7 +10,7 @@
     };
 
     plasma-manager = {
-      url = "github:nix-community/plasma-manager";
+      url = "github:tucho/plasma-manager/basilio";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
