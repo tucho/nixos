@@ -73,6 +73,24 @@
             {
               iconTasks = {
                 launchers = [];
+                behavior = {
+                  grouping.method = "none";
+                  sorting.method = "manually";
+                  minimizeActiveTaskOnClick = false;
+                  middleClickAction = "none";
+                  wheel = {
+                    switchBetweenTasks = false;
+                    ignoreMinimizedTasks = false;
+                  };
+                  showTasks = {
+                    onlyInCurrentScreen = true;
+                    onlyInCurrentDesktop = true;
+                    onlyInCurrentActivity = true;
+                    onlyMinimized = false;
+                  };
+                  unhideOnAttentionNeeded = false;
+                  newTasksAppearOn = "right";
+                };
               };
             }
             "org.kde.plasma.marginsseparator"
