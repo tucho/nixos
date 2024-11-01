@@ -75,7 +75,7 @@
                 launchers = [];
                 behavior = {
                   grouping.method = "none";
-                  sorting.method = "manually";
+                  sortingMethod = "manually";
                   minimizeActiveTaskOnClick = false;
                   middleClickAction = "none";
                   wheel = {
