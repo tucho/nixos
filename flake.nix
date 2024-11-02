@@ -8,22 +8,15 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plasma-manager = {
-      url = "github:tucho/plasma-manager/basilio";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.basilio = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./boot
         ./fonts
         ./hardware
-        ./kde
         ./localization
         ./misc
         ./networking
@@ -37,9 +30,6 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
-            sharedModules = [
-              plasma-manager.homeManagerModules.plasma-manager
-            ];
           };
         }
       ];

@@ -37,35 +37,10 @@
         "type": "github"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1730426999,
-        "narHash": "sha256-NUt+3Lw0DS0G8cAXNVhwEedgHWWqJ3UObcAmP9iBSiY=",
-        "owner": "tucho",
-        "repo": "plasma-manager",
-        "rev": "ff8acf110a5d567b8d13b8660f2cc0f24dd2ad1f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tucho",
-        "ref": "basilio",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
-        "plasma-manager": "plasma-manager"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
