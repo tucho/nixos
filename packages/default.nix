@@ -12,7 +12,7 @@
     ./gnupg.nix
     ./htop.nix
     ./latex.nix
-    ./libreoffice.nix
+    # ./libreoffice.nix
     ./lilypond.nix
     ./musescore.nix
     ./nvtop.nix
