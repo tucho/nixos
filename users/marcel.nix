@@ -9,7 +9,7 @@
       "networkmanager"
       "vboxusers"
     ];
-    hashedPassword = "$y$j9T$pqDxnGbmzPaho84A/V0gA1$2fDA/3dpa7gGlAYShr0qu.PAGET5gExTaUN0nkkiwY0";
+    hashedPassword = "$y$j9T$K2iavyFzTae6aLn0HqyDj1$umunQv.Q8Adjgubww92eX.6rKdElun3eAsG3nQ5oLx5";
     shell = pkgs.zsh;
   };
 
