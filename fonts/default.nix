@@ -3,7 +3,8 @@
 {
   fonts = {
     packages = with pkgs; [
-      nerdfonts
+      nerd-fonts.hurmit
+      nerd-fonts.symbols-only
       noto-fonts
     ];
   };
