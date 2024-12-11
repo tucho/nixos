@@ -5,6 +5,7 @@
     ./calibre.nix
     ./direnv.nix
     ./discord.nix
+    ./docker.nix
     ./emacs.nix
     ./firefox.nix
     ./gimp.nix
