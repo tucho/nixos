@@ -4,6 +4,7 @@
   home-manager.users.marcel = {
     wayland.windowManager.hyprland = {
       enable = true;
+      systemd.enable = false;
       settings = {
         monitor = "eDP-1, 1920x1080, 0x0, 1";
         general = {
@@ -96,5 +97,10 @@
     };
 
     programs.kitty.enable = true;
+  };
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
   };
 }
