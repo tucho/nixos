@@ -103,4 +103,22 @@
     enable = true;
     withUWSM = true;
   };
+
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command =
+            ''
+            ${pkgs.greetd.tuigreet}/bin/tuigreet \
+            --time --time-format '%Y-%m-%d %H:%M:%S' \
+            --asterisks \
+            --remember-session
+            '';
+          user = "greeter";
+        };
+      };
+    };
+  };
 }
