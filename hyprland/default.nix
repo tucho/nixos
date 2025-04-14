@@ -113,7 +113,6 @@
             ''
             ${pkgs.greetd.tuigreet}/bin/tuigreet \
             --time --time-format '%Y-%m-%d %H:%M:%S' \
-            --asterisks \
             --remember-session
             '';
           user = "greeter";
