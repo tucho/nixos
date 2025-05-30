@@ -40,7 +40,7 @@
         maxCacheTtl = 14400;
         defaultCacheTtlSsh = 3600;
         maxCacheTtlSsh = 14400;
-        pinentryPackage = pkgs.pinentry-curses;
+        pinentry.package = pkgs.pinentry-curses;
         extraConfig = ''
           allow-emacs-pinentry
           allow-loopback-pinentry
