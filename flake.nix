@@ -23,6 +23,7 @@
         ./networking
         ./packages
         ./printing
+        ./scanning
         ./sound
         ./users
 
