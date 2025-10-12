@@ -33,6 +33,31 @@
       systemd.enable = false;
       settings = {
         monitor = "eDP-1, 1920x1080, 0x0, 1";
+
+        general = {
+          border_size = 2;
+          gaps_in = 4;
+          gaps_out = 8;
+          layout = "master";
+        };
+
+        decoration = {
+          rounding = 4;
+          rounding_power = 4.0;
+          dim_inactive = true;
+          dim_strength = 0.2;
+          active_opacity = 1.0;
+          inactive_opacity = 0.8;
+        };
+
+        input = {
+          follow_mouse = 2;
+          touchpad = {
+            natural_scroll = true;
+            tap_button_map = "lmr";
+          };
+        };
+
         bind =
           [
             "SUPER, RETURN, exec, kitty"
