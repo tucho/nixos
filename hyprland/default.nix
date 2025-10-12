@@ -106,5 +106,40 @@
     };
 
     programs.kitty.enable = true;
+
+    programs.waybar = {
+      enable = true;
+      systemd = {
+        enable = true;
+        target = "graphical-session.target";
+      };
+      settings = {
+        mainBar = {
+          position = "bottom";
+          modules-left = [
+            "hyprland/workspaces"
+          ];
+          modules-right = [
+            "battery"
+            "clock"
+          ];
+          battery = {
+            interval = 1;
+            states = {
+              warning = 30;
+                critical = 15;
+            };
+            format = "{capacity}% {icon}";
+            format-icons =  ["" "" "" "" ""];
+            max-length= 25;
+          };
+          clock = {
+            interval = 1;
+            format = "{:%H:%M:%S}";
+            max-length = 25;
+          };
+        };
+      };
+    };
   };
 }
