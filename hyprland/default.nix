@@ -8,6 +8,25 @@
     withUWSM = true;
   };
 
+  services = {
+    greetd = {
+      enable = true;
+      useTextGreeter = true;
+      settings = {
+        default_session = {
+          command =
+            ''
+            ${pkgs.tuigreet}/bin/tuigreet \
+            --time \
+            --time-format '%Y-%m-%d %H:%M:%S' \
+            --remember-session
+            '';
+          user = "greeter";
+        };
+      };
+    };
+  };
+
   home-manager.users.marcel = {
     wayland.windowManager.hyprland = {
       enable = true;
