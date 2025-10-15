@@ -5,7 +5,6 @@
     programs = {
       gpg = {
         enable = true;
-        homedir = "${config.home-manager.users.marcel.xdg.dataHome}/gnupg";
         settings = {
           # Get rid of the copyright notice
           no-greeting = true;
