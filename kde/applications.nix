@@ -5,6 +5,7 @@
     dragon
     filelight
     kcalc
+    krohnkite
     ktorrent
     skanpage
     yakuake
