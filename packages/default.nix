@@ -9,6 +9,7 @@
     ./git.nix
     ./gnupg.nix
     ./htop.nix
+    ./nix-index.nix
     ./nvtop.nix
     ./ripgrep.nix
     ./ssh.nix
