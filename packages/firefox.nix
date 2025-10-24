@@ -10,6 +10,7 @@
             isDefault = true;
             settings = {
               "browser.translations.automaticallyPopup" = false;
+              "browser.tabs.inTitlebar" = 0;
             };
           };
         };
