@@ -13,14 +13,14 @@
       git = {
         enable = true;
 
-        userName = "Marcel Campello";
-        userEmail = "marcel.campello@prafrentex.com.br";
-
-        aliases = {
-          logg = "log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ai%C(reset) %C(auto)%d%C(reset) %C(green)%an%C(reset) %C(magenta)%G?%C(reset) %s'";
-        };
-
-        extraConfig = {
+        settings = {
+          user = {
+            name = "Marcel Campello";
+            email = "marcel.campello@prafrentex.com.br";
+          };
+          aliases = {
+            logg = "log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ai%C(reset) %C(auto)%d%C(reset) %C(green)%an%C(reset) %C(magenta)%G?%C(reset) %s'";
+          };
           core = {
             whitespace = "warn,tab-in-indent";
             editor = "emacsclient -nw";
