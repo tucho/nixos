@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./calibre.nix
     ./direnv.nix
     ./docker.nix
     ./emacs.nix
