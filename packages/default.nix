@@ -10,6 +10,8 @@
     ./git.nix
     ./gnupg.nix
     ./htop.nix
+    ./latex.nix
+    ./lilypond.nix
     ./nix-index.nix
     ./nvtop.nix
     ./ripgrep.nix
