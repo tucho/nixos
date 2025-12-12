@@ -18,6 +18,7 @@
     ./ssh.nix
     ./tor-browser.nix
     ./tree.nix
+    ./virtualbox.nix
     ./zsh.nix
   ];
 }

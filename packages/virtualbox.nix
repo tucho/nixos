@@ -6,4 +6,6 @@
     headless = true;
     addNetworkInterface = true;
   };
+
+  users.extraGroups.vboxusers.members = [ "marcel" ];
 }
