@@ -9,6 +9,7 @@
     programs = {
       zsh = {
         enable = true;
+        dotDir = "${config.home-manager.users.marcel.xdg.configHome}/zsh";
         defaultKeymap = "emacs";
 
         history = {
