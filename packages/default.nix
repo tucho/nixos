@@ -12,6 +12,7 @@
     ./htop.nix
     ./latex.nix
     ./lilypond.nix
+    ./musescore.nix
     ./nix-index.nix
     ./nvtop.nix
     ./ripgrep.nix
