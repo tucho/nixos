@@ -18,7 +18,7 @@
             name = "Marcel Campello";
             email = "marcel.campello@prafrentex.com.br";
           };
-          aliases = {
+          alias = {
             logg = "log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(cyan)%ai%C(reset) %C(auto)%d%C(reset) %C(green)%an%C(reset) %C(magenta)%G?%C(reset) %s'";
           };
           core = {
