@@ -6,7 +6,7 @@
     dolphin
     dragon
     filelight
-    k3b
+    # k3b
     kcalc
     kio
     krohnkite
