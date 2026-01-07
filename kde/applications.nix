@@ -9,9 +9,11 @@
     # k3b
     kcalc
     kio
+    kio-extras
     krohnkite
     ktorrent
     skanpage
+    xdg-desktop-portal-kde
     yakuake
   ];
 }
