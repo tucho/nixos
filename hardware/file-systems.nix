@@ -6,7 +6,7 @@
       device = "/dev/disk/by-label/top_level";
       fsType = "btrfs";
       options = [
-        "subvol=root"
+        "subvol=@"
         "compress=zstd"
       ];
     };
@@ -15,7 +15,7 @@
       device = "/dev/disk/by-label/top_level";
       fsType = "btrfs";
       options = [
-        "subvol=nix"
+        "subvol=@nix"
         "compress=zstd"
         "noatime"
       ];
@@ -25,7 +25,7 @@
       device = "/dev/disk/by-label/top_level";
       fsType = "btrfs";
       options = [
-        "subvol=home"
+        "subvol=@home"
         "compress=zstd"
       ];
     };
