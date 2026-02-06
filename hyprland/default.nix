@@ -20,6 +20,12 @@
             "SUPER SHIFT, Q, killactive"
             "SUPER SHIFT, END, exit"
           ];
+        general = {
+          layout = "master";
+        };
+        master = {
+          new_status = "slave";
+        };
       };
     };
 
