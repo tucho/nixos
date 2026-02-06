@@ -65,6 +65,13 @@
         master = {
           new_status = "slave";
         };
+
+        input = {
+          touchpad = {
+            natural_scroll = true;
+            tap_button_map = "lmr";
+          };
+        };
       };
     };
 
