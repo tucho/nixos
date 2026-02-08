@@ -18,6 +18,7 @@
             "SUPER, RETURN, exec, kitty"
             "SUPER, E, exec, emacsclient -nc"
             "SUPER, F, exec, firefox"
+            "SUPER, D, exec, rofi -show drun"
             "SUPER SHIFT, Q, killactive"
             "SUPER SHIFT, END, exit"
 
@@ -77,5 +78,12 @@
     };
 
     programs.kitty.enable = true;
+
+    programs.rofi = {
+      enable = true;
+      modes = [
+        "drun"
+      ];
+    };
   };
 }
