@@ -4,7 +4,10 @@
   programs.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+    withUWSM = true;
   };
+
+  programs.uwsm.enable = true;
 
   home-manager.users.marcel = {
     wayland.windowManager.hyprland = {
