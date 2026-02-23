@@ -21,12 +21,12 @@
 
         bind =
           [
-            "SUPER, RETURN, exec, kitty"
-            "SUPER, E, exec, emacsclient -nc"
-            "SUPER, F, exec, firefox"
-            "SUPER, D, exec, rofi -show drun"
+            "SUPER, RETURN, exec, uwsm app -- kitty.desktop"
+            "SUPER, E, exec, uwsm app -- emacsclient.desktop"
+            "SUPER, F, exec, uwsm app -- firefox.desktop"
+            "SUPER, D, exec, uwsm app -- rofi.desktop"
             "SUPER SHIFT, Q, killactive"
-            "SUPER SHIFT, END, exit"
+            "SUPER SHIFT, END, exec, uwsm stop"
 
             # Move focus with SUPER + arrow keys
             "SUPER, LEFT, movefocus, l"
