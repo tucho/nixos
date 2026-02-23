@@ -4,7 +4,6 @@
   imports = [
     ./calibre.nix
     ./direnv.nix
-    ./docker.nix
     ./emacs.nix
     ./firefox.nix
     ./git.nix
@@ -19,7 +18,6 @@
     ./ssh.nix
     ./tor-browser.nix
     ./tree.nix
-    ./virtualbox.nix
     ./zsh.nix
   ];
 }
