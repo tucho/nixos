@@ -19,9 +19,6 @@
         };
       };
     };
-    graphics = {
-      enable = true;
-    };
   };
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = lib.mkDefault [
