@@ -10,6 +10,18 @@
   programs.uwsm.enable = true;
 
   home-manager.users.marcel = {
+    xdg.configFile."uwsm/env".text =
+      ''
+      export LIBVA_DRIVER_NAME="nvidia"
+      export __GLX_VENDOR_LIBRARY_NAME="nvidia"
+      export NVD_BACKEND="direct"
+      '';
+
+    xdg.configFile."uwsm/env-hyprland".text =
+      ''
+      export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
+      '';
+
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
