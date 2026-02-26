@@ -4,8 +4,14 @@
   programs.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     withUWSM = true;
   };
+
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.kdePackages.xdg-desktop-portal-kde
+  ];
 
   programs.uwsm.enable = true;
 
