@@ -136,26 +136,76 @@
             "hyprland/workspaces"
           ];
           modules-right = [
+            "wireplumber"
+            "pulseaudio#source"
+            "bluetooth"
             "battery"
             "clock"
           ];
-          battery = {
-            interval = 1;
+          
+          "battery" = {
             states = {
-              warning = 30;
-              critical = 15;
+              good = 95;
+              warning = 20;
+              critical = 10;
             };
             format = "{capacity}% {icon}";
-            format-icons =  ["" "" "" "" ""];
-            max-length= 25;
+            format-charging = "{capacity}% ";
+            format-plugged = "{capacity}% ";
+            tooltip-format = "{time} ({capacity}%)";
+            format-alt = "{time} {icon}";
+            format-full = "";
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
-          clock = {
+          
+          "clock" = {
             interval = 1;
             format = "{:%Y-%m-%d %H:%M:%S}";
             max-length = 25;
+          };
+
+          "wireplumber" = {
+            format = "{volume}% {icon}";
+            format-muted = "";
+            on-click = "${lib.getExe pkgs.pwvucontrol}";
+            format-icons = [
+              ""
+              ""
+              ""
+            ];
+            tooltip-format = "{volume}% / {node_name}";
+          };
+          
+          "pulseaudio#source" = {
+            format = "{format_source}";
+            format-source = "";
+            format-source-muted = "";
+            on-click = "${lib.getExe pkgs.pwvucontrol}";
+            tooltip-format = "{source_volume}% / {desc}";
+          };
+          
+          "bluetooth" = {
+            format-on = "";
+            format-connected = "{device_alias} ";
+            format-off = "";
+            format-disabled = "";
+            on-click-right = "${lib.getExe' pkgs.blueman "blueman-manager"}";
+            # on-click = "${lib.getExe bluetoothToggle}";
           };
         };
       };
     };
   };
+  
+  environment.systemPackages = with pkgs; [
+    pwvucontrol
+  ];
+
+  services.blueman.enable = true;
 }
