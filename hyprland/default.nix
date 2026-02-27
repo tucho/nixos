@@ -18,9 +18,11 @@
   home-manager.users.marcel = {
     xdg.configFile."uwsm/env".text =
       ''
-      export LIBVA_DRIVER_NAME="nvidia"
-      export __GLX_VENDOR_LIBRARY_NAME="nvidia"
-      export NVD_BACKEND="direct"
+      export LIBVA_DRIVER_NAME=nvidia
+      export XDG_SESSION_TYPE,wayland
+      export __GLX_VENDOR_LIBRARY_NAME=nvidia
+      export GBM_BACKEND,nvidia-drm
+      export NVD_BACKEND=direct
       '';
 
     xdg.configFile."uwsm/env-hyprland".text =
