@@ -15,6 +15,19 @@
 
   programs.uwsm.enable = true;
 
+  services.displayManager.sddm = {
+    enable = true;
+    package = pkgs.kdePackages.sddm;
+    wayland.enable = true;
+    theme = "sddm-astronaut-theme";
+    extraPackages = with pkgs; [
+      sddm-astronaut
+      kdePackages.qtbase
+      kdePackages.qtwayland
+      kdePackages.qtmultimedia
+    ];
+  };
+  
   home-manager.users.marcel = {
     xdg.configFile."uwsm/env".text =
       ''
@@ -207,6 +220,10 @@
   
   environment.systemPackages = with pkgs; [
     pwvucontrol
+    sddm-astronaut
+    kdePackages.qtbase
+    kdePackages.qtwayland
+    kdePackages.qtmultimedia
   ];
 
   services.blueman.enable = true;
