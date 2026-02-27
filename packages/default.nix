@@ -2,9 +2,8 @@
 
 {
   imports = [
-    ./calibre.nix
+    # ./calibre.nix
     ./direnv.nix
-    ./docker.nix
     ./emacs.nix
     ./firefox.nix
     ./git.nix
@@ -17,9 +16,9 @@
     ./nvtop.nix
     ./ripgrep.nix
     ./ssh.nix
+    ./steam.nix
     ./tor-browser.nix
     ./tree.nix
-    ./virtualbox.nix
     ./zsh.nix
   ];
 }

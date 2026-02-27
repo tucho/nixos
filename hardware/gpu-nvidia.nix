@@ -3,7 +3,7 @@
 {
   hardware = {
     nvidia = {
-      open = false;
+      open = true;
       modesetting.enable = true;
       powerManagement = {
         enable = true;
@@ -18,9 +18,6 @@
           enableOffloadCmd = true;
         };
       };
-    };
-    graphics = {
-      enable = true;
     };
   };
   nixpkgs.config.allowUnfree = true;
