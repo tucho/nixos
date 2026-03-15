@@ -58,6 +58,7 @@
             "SUPER, E, exec, uwsm app -- emacsclient.desktop"
             "SUPER, F, exec, uwsm app -- firefox.desktop"
             "SUPER, D, exec, uwsm app -- rofi.desktop"
+            "SUPER, Y, exec, uwsm app -- yazi.desktop"
             "SUPER SHIFT, Q, killactive"
             "SUPER SHIFT, END, exec, uwsm stop"
 
