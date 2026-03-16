@@ -1,0 +1,1147 @@
+#+title: Tucho's Emacs configuration
+#+author: Tucho (Marcel Campello)
+
+* Table of contents :toc_4_org:
+- [[Ancillary macros and functions][Ancillary macros and functions]]
+- [[General settings][General settings]]
+  - [[Tweak user interface][Tweak user interface]]
+  - [[Line numbering and highlighting][Line numbering and highlighting]]
+  - [[Text manipulation][Text manipulation]]
+  - [[Disable auto-save and backup][Disable auto-save and backup]]
+  - [[Tweak *scratch* buffer][Tweak *scratch* buffer]]
+  - [[Minibuffer][Minibuffer]]
+  - [[Configure indentation and tabulation][Configure indentation and tabulation]]
+  - [[Set coding system][Set coding system]]
+  - [[Misc][Misc]]
+- [[Configure package and use-package][Configure package and use-package]]
+  - [[Configure package][Configure package]]
+  - [[Configure use-package][Configure use-package]]
+- [[Org mode][Org mode]]
+  - [[General configurattion][General configurattion]]
+  - [[Source code block tag expansion][Source code block tag expansion]]
+  - [[Enable org bullets][Enable org bullets]]
+  - [[Generate table of contents][Generate table of contents]]
+- [[PDF][PDF]]
+- [[Theming][Theming]]
+  - [[doom themes][doom themes]]
+  - [[doom modeline][doom modeline]]
+  - [[nerd-icons][nerd-icons]]
+- [[Usability][Usability]]
+  - [[which-key][which-key]]
+  - [[ace-window][ace-window]]
+- [[System integration][System integration]]
+  - [[exec-path-from-shell][exec-path-from-shell]]
+  - [[pinentry][pinentry]]
+  - [[direnv][direnv]]
+  - [[hardcore mode][hardcore mode]]
+- [[Search and completion][Search and completion]]
+  - [[vertico][vertico]]
+  - [[orderless][orderless]]
+  - [[marginalia][marginalia]]
+  - [[consult][consult]]
+  - [[corfu][corfu]]
+- [[Project/workspace management and navigation][Project/workspace management and navigation]]
+  - [[treemacs][treemacs]]
+  - [[projectile][projectile]]
+- [[Version control][Version control]]
+  - [[git][git]]
+- [[Programming][Programming]]
+  - [[Code formatting][Code formatting]]
+    - [[smartparens][smartparens]]
+    - [[aggressive-indent][aggressive-indent]]
+    - [[rainbow-delimitters][rainbow-delimitters]]
+    - [[ethan-wspaces][ethan-wspaces]]
+  - [[Syntax checking][Syntax checking]]
+    - [[flycheck][flycheck]]
+  - [[Language server protocol][Language server protocol]]
+  - [[Treesit][Treesit]]
+  - [[Languages][Languages]]
+    - [[Clojure][Clojure]]
+    - [[Python][Python]]
+    - [[Lua][Lua]]
+    - [[Nix][Nix]]
+    - [[Docker][Docker]]
+    - [[Lilypond][Lilypond]]
+    - [[Markdown][Markdown]]
+    - [[PKGBUILD][PKGBUILD]]
+    - [[yaml][yaml]]
+- [[Load other config files][Load other config files]]
+
+* Ancillary macros and functions
+
+Macros to enable and disable modes.
+#+begin_src emacs-lisp
+  (defmacro set-mode (mode value)
+    "Call a '-mode' function with 'value' as its argument, if this function exists."
+    `(when (fboundp ',mode)
+       (funcall ',mode ,value)))
+
+  (defmacro enable (mode)
+    "Call the '-mode' function with 1 as its argument, thus enabling this mode."
+    `(set-mode ,mode 1))
+
+  (defmacro disable (mode)
+    "Call the '-mode' function with -1 as its argument, thus disabling this mode."
+    `(set-mode ,mode -1))
+#+end_src
+
+Function to expand a file contained in the Emacs configuration directory.
+#+begin_src emacs-lisp
+  (defun emacs-d (filename)
+    "Expand FILENAME relative to 'user-emacs-directory'."
+    (expand-file-name filename user-emacs-directory))
+#+end_src
+
+Function to reload the entire Emacs configuration.
+#+begin_src emacs-lisp
+  (defun reload-emacs-config ()
+    "Reload the init.el file, thus 'rerunnig' all the configuration."
+    (interactive)
+    (load-file (emacs-d "init.el"))
+    (message "configuration reloaded"))
+#+end_src
+
+* General settings
+
+** Tweak user interface
+
+Do not show the startup screen.
+#+begin_src emacs-lisp
+  (setq inhibit-startup-screen t)
+#+end_src
+
+Remove distracting elements.
+#+begin_src emacs-lisp
+  (disable menu-bar-mode)
+  (disable tool-bar-mode)
+  (disable scroll-bar-mode)
+  (disable horizontal-scroll-bar-mode)
+#+end_src
+
+Allow frames to be resized pixelwise.
+#+begin_src emacs-lisp
+  (setq frame-resize-pixelwise t)
+#+end_src
+
+Maximize frame.
+#+begin_src emacs-lisp
+  ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+#+end_src
+
+Configure fonts.
+#+begin_src emacs-lisp
+  (setq unified-font-family "Hurmit Nerd Font")
+
+  (set-face-attribute 'default nil
+                      :family "Hurmit Nerd Font"
+                      :height 100)
+#+end_src
+
+Tooltips config.
+#+begin_src emacs-lisp
+  (setq use-system-tooltips nil)
+#+end_src
+
+** Line numbering and highlighting
+
+Highlight the current line.
+#+begin_src emacs-lisp
+  (enable global-hl-line-mode)
+#+end_src
+
+Show line numbers.
+#+begin_src emacs-lisp
+  (setq display-line-numbers-width-start t)
+  (enable global-display-line-numbers-mode)
+#+end_src
+
+Configure mode line to show point's current line and column numbers.
+#+begin_src emacs-lisp
+  (enable line-number-mode)
+  (enable column-number-mode)
+#+end_src
+
+** Text manipulation
+
+Enable visual line mode globally ("break" long logical lines into two or more screen lines).
+#+begin_src emacs-lisp
+  (enable global-visual-line-mode)
+#+end_src
+
+** Disable auto-save and backup
+
+Disable auto-save files (those like #filename#).
+#+begin_src emacs-lisp
+  (setq auto-save-default nil)
+  (setq auto-save-list-file-prefix nil)
+#+end_src
+
+Disable backup files (those like filename~).
+#+begin_src emacs-lisp
+  (setq make-backup-files nil)
+#+end_src
+
+** Tweak *scratch* buffer
+
+Start with a clean the scratch buffer.
+#+begin_src emacs-lisp
+  (setq initial-scratch-message nil)
+#+end_src
+
+Make the scratch buffer unkillable.
+#+begin_src emacs-lisp
+  (defun dont-kill-but-bury-scratch ()
+    (if (equal (buffer-name (current-buffer))
+               "*scratch*")
+        (progn
+          (bury-buffer)
+          nil)
+      t))
+
+  (add-hook 'kill-buffer-query-functions 'dont-kill-but-bury-scratch)
+#+end_src
+
+** Minibuffer
+
+Support opening new minibuffers from inside existing minibuffers.
+#+begin_src emacs-lisp
+  (setq enable-recursive-minibuffers t)
+#+end_src
+
+Hide commands in M-x which do not work in the current mode.
+#+begin_src emacs-lisp
+  (setq read-extended-command-predicate #'command-completion-default-include-p)
+#+end_src
+
+Do not allow the cursor in the minibuffer prompt
+#+begin_src emacs-lisp
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+#+end_src
+
+** Configure indentation and tabulation
+
+Make indentation space-only and tabulation 4-space wide.
+#+begin_src emacs-lisp
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+#+end_src
+
+** Set coding system
+
+Set UTF-8 as the coding system for:
+- newly created buffers;
+- subprocess I/O;
+- file names;
+- terminal;
+- keyboard.
+#+begin_src emacs-lisp
+  (set-default-coding-systems 'utf-8)
+#+end_src
+
+** Misc
+
+#+begin_src emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (enable global-auto-revert-mode)
+#+end_src
+
+
+* Configure package and use-package
+
+I am going to use ~package~ as the package manager and ~use-package~ for package configuration.
+
+** Configure package
+
+Require ~package~.
+#+begin_src emacs-lisp
+  (require 'package)
+#+end_src
+
+Prevent it from messing with ~init.el~.
+#+begin_src emacs-lisp
+  (setq package--init-file-ensured t)
+  (setq custom-file (emacs-d "custom-file.el"))
+  (when (file-exists-p custom-file)
+    (load custom-file))
+#+end_src
+
+Configure archives.
+#+begin_src emacs-lisp
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (setq package-archive-priorities '(("melpa" . 20)
+                                     ("gnu" . 10)))
+#+end_src
+
+** Configure use-package
+
+Require and configure ~use-package~. Enable ~always-ensure~ feature.
+#+begin_src emacs-lisp
+  (eval-when-compile
+    (require 'use-package))
+
+  (use-package use-package
+
+    :ensure nil)
+
+  (use-package use-package-ensure
+
+    :ensure nil
+
+    :after
+    (use-package)
+
+    :custom
+    (use-package-always-ensure t))
+#+end_src
+
+Configure ~bind-key~ (needed to use the ~:bind~ keyword in ~use-package~).
+#+begin_src emacs-lisp
+  (use-package bind-key
+
+    :ensure nil)
+#+end_src
+
+* Org mode
+
+** General configurattion
+
+#+begin_src emacs-lisp
+  (use-package org
+
+    :ensure nil
+
+    :hook
+    (org-mode . org-indent-mode)
+
+    :custom
+    (org-src-window-setup 'current-window)
+    (org-special-ctrl-a/e t)
+    (org-special-ctrl-k t)
+    (org-ctrl-k-protect-subtree t))
+#+end_src
+
+** Source code block tag expansion
+
+org-tempo is not a separate package but a module within org that can be enabled. org-tempo allows for '<s' followed by TAB to expand to a begin_src tag. Other expansions available include:
+
+| Typing the below + TAB | Expands to ...                          |
+|------------------------+-----------------------------------------|
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
+| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
+| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
+| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
+| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
+| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
+| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
+| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
+| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
+
+#+begin_src emacs-lisp
+  (use-package org-tempo
+
+    :ensure nil
+
+    :after
+    (org))
+#+end_src
+
+** Enable org bullets
+
+org-bullets gives us attractive bullets rather than asterisks.
+#+begin_src emacs-lisp
+  (use-package org-bullets
+
+    :hook
+    (org-mode . org-bullets-mode))
+#+end_src
+
+** Generate table of contents
+#+begin_src emacs-lisp
+  (use-package toc-org
+
+    :hook
+    (org-mode . toc-org-enable))
+#+end_src
+
+
+* PDF
+
+#+begin_src emacs-lisp
+  (use-package pdf-tools
+
+    :hook
+    (pdf-view-mode . (lambda ()
+                       (disable display-line-numbers-mode)))
+
+    :config
+    (pdf-tools-install))
+#+end_src
+
+
+* Theming
+
+** doom themes
+
+#+begin_src emacs-lisp
+  (use-package doom-themes
+
+    :config
+    (doom-themes-visual-bell-config)
+    (load-theme 'doom-molokai t)
+
+    :custom
+    (doom-themes-enable-bold t)
+    (doom-themes-enable-italic t))
+#+end_src
+
+** doom modeline
+
+#+begin_src emacs-lisp
+  (use-package doom-modeline
+
+    :init
+    (enable doom-modeline-mode)
+
+    :custom
+    (doom-modeline-column-zero-based nil)
+    (doom-modeline-position-column-line-format '(" (%l,%c) "))
+    (doom-modeline-enable-word-count t))
+#+end_src
+
+** nerd-icons
+
+#+begin_src emacs-lisp
+  (use-package nerd-icons
+
+    :init
+    (unless (find-font (font-spec :family unified-font-family))
+      (nerd-icons-install-fonts t))
+
+    :custom
+    (nerd-icons-font-family unified-font-family))
+#+end_src
+
+* Usability
+
+** which-key
+
+#+begin_src emacs-lisp
+  (use-package which-key
+
+    :ensure nil
+
+    :init
+    (enable which-key-mode)
+
+    :custom
+    (which-key-popup-type 'side-window)
+    (which-key-side-window-location 'bottom)
+    (which-key-sort-order 'which-key-local-then-key-order)
+    (which-key-add-column-padding 4)
+    (which-key-max-description-length 40)
+
+    :bind
+    ("C-c C-SPC" . which-key-show-top-level))
+#+end_src
+
+** ace-window
+
+#+begin_src emacs-lisp
+  (use-package ace-window
+
+    :custom
+    (aw-dispatch-always t)
+    (aw-scope 'frame)
+    (aw-ignore-current nil)
+
+    :custom-face
+    (aw-leading-char-face ((t ( :background "dark orange"
+                                :foreground "dark red"
+                                :weight bold
+                                :height 1.5))))
+
+    :bind
+    ("M-o" . ace-window))
+#+end_src
+
+* System integration
+
+** exec-path-from-shell
+
+#+begin_src emacs-lisp
+  (use-package exec-path-from-shell
+
+    :config
+    (exec-path-from-shell-initialize))
+#+end_src
+
+** pinentry
+
+#+begin_src emacs-lisp
+  (use-package pinentry
+
+    :custom
+    (epg-pinentry-mode 'loopback)
+
+    :config
+    (pinentry-start))
+#+end_src
+
+** direnv
+
+#+begin_src emacs-lisp
+  (use-package direnv
+
+    :config
+    (enable direnv-mode))
+#+end_src
+
+** hardcore mode
+
+#+begin_src emacs-lisp
+  (use-package hardcore-mode
+
+    :custom
+    (too-hardcore-backspace t)
+    (too-hardcore-return t)
+
+    :config
+    (enable global-hardcore-mode))
+#+end_src
+
+* Search and completion
+
+** vertico
+
+#+begin_src emacs-lisp
+  (use-package vertico
+
+    :init
+    (enable vertico-mode)
+
+    :hook
+    (rfn-eshadow-update-overlay . vertico-directory-tidy)
+
+    :bind
+    (:map vertico-map
+          ("TAB" . minibuffer-complete)
+          ("C-<backspace>" . vertico-directory-delete-word)
+          ("M-<backspace>" . vertico-directory-delete-word)))
+#+end_src
+
+** orderless
+
+#+begin_src emacs-lisp
+  (use-package orderless
+
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
+#+end_src
+
+** marginalia
+
+#+begin_src emacs-lisp
+  (use-package marginalia
+
+    :custom
+    (marginalia-max-relative-age 0)
+
+    :init
+    (enable marginalia-mode))
+
+
+  (use-package nerd-icons-completion
+
+    :after
+    (nerd-icons
+     marginalia)
+
+    :config
+    (nerd-icons-completion-mode))
+#+end_src
+
+** consult
+
+#+begin_src emacs-lisp
+  (use-package consult
+
+    :bind
+    ("C-c M-x" . consult-mode-command)
+    ("C-c h" . consult-history)
+
+    ("C-x b" . consult-buffer)
+    ("C-x 4 b" . consult-buffer-other-window)
+    ("C-x 5 b" . consult-buffer-other-frame)
+
+    ("M-y" . consult-yank-pop)
+
+    ("M-g g" . consult-goto-line)
+    ("M-g M-g" . consult-goto-line)
+    ("M-g o" . consult-outline)
+
+    ("M-s l" . consult-line)
+    ("M-s k" . consult-keep-lines)
+    ("M-s u" . consult-focus-lines)
+
+    (:map minibuffer-local-map
+          ("M-s" . consult-history)
+          ("M-r" . consult-history)))
+#+end_src
+
+** corfu
+
+#+begin_src emacs-lisp
+  (use-package corfu
+
+    :custom
+    (corfu-cycle t)
+    (corfu-auto t)
+    (corfu-auto-prefix 1)
+    (corfu-preselect 'prompt)
+    (tab-always-indent 'complete)
+
+    :bind
+    (:map corfu-map
+          ("TAB" . corfu-next)
+          ("S-TAB" . corfu-previous))
+
+    :init
+    (global-corfu-mode)
+    (corfu-history-mode)
+    (corfu-popupinfo-mode))
+
+
+  (use-package  nerd-icons-corfu
+
+    :after
+    (nerd-icons
+     corfu)
+
+    :config
+    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+#+end_src
+
+* Project/workspace management and navigation
+
+** treemacs
+
+#+begin_src emacs-lisp
+  (use-package treemacs
+
+    :custom
+    (treemacs-is-never-other-window t)
+
+    :config
+    (treemacs-git-mode 'deferred)
+    (enable treemacs-git-commit-diff-mode)
+
+    :bind
+    ("M-0" . treemacs-select-window))
+
+
+  (use-package treemacs-nerd-icons
+
+    :config
+    (treemacs-load-theme "nerd-icons"))
+
+
+  (use-package treemacs-icons-dired
+
+    :hook
+    (dired-mode . treemacs-icons-dired-enable-once))
+
+
+  (use-package treemacs-magit
+
+    :after
+    (treemacs
+     magit))
+
+
+  (use-package treemacs-projectile
+
+    :after
+    (treemacs
+     projectile))
+#+end_src
+
+** projectile
+
+#+begin_src emacs-lisp
+  (use-package projectile
+
+    :init
+    (enable projectile-mode)
+
+    :bind
+    (:map projectile-mode-map
+          ("C-c p" . projectile-command-map))
+
+    :custom
+    (projectile-cleanup-known-projects t)
+    (projectile-enable-caching t))
+
+
+  (use-package ripgrep)
+#+end_src
+
+* Version control
+
+** git
+
+#+begin_src emacs-lisp
+  (use-package magit
+
+    :bind
+    ("C-x g" . magit)
+    ("C-x M-g" . magit-dispatch))
+
+
+  (use-package treemacs-magit
+
+    :after
+    (treemacs
+     magit))
+
+
+  (use-package git-gutter
+
+    :config
+    (enaable global-git-gutter-mode)
+
+    :custom
+    (git-gutter:update-interval 0.5)
+
+    :bind
+    ("C-x C-g" . git-gutter)
+    ("C-x v =" . git-gutter:popup-hook)
+    ("C-x v p" . git-gutter:previous-hunk)
+    ("C-x v n" . git-gutter:next-hunk)
+    ("C-x v e" . git-gutter:end-of-hunk)
+    ("C-x v s" . git-gutter:stage-hunk)
+    ("C-x v r" . git-gutter:revert-hunk)
+    ("C-x v SPC" . git-gutter:mark-hunk))
+#+end_src
+
+* Programming
+
+** Code formatting
+
+*** smartparens
+
+#+begin_src emacs-lisp
+  (use-package smartparens
+
+    :hook
+    (prog-mode . smartparens-strict-mode)
+
+    :config
+    (require 'smartparens-config)
+
+    :bind
+    (:map smartparens-mode-map
+          ("C-M-f" . sp-forward-sexp)
+          ("C-M-b" . sp-backward-sexp)
+
+          ("C-M-n" . sp-beginning-of-next-sexp)
+          ("C-M-S-n" . sp-end-of-next-sexp)
+          ("C-M-p" . sp-beginning-of-previous-sexp)
+          ("C-M-S-p" . sp-end-of-previous-sexp)
+
+          ("C-M-a" . sp-beginning-of-sexp)
+          ("C-M-e" . sp-end-of-sexp)
+
+          ("C-M-<down>" . sp-down-sexp)
+          ("C-M-S-<down>" . sp-backward-down-sexp)
+
+          ("C-M-<up>" . sp-backward-up-sexp)
+          ("C-M-S-<up>" . sp-up-sexp)
+
+          ("C-M-<space>" . sp-mark-sexp)
+
+          ("C-M-<right>" . sp-forward-slurp-sexp)
+          ("C-M-<left>" . sp-backward-slurp-sexp)
+
+          ("C-M-S-<right>" . sp-backward-barf-sexp)
+          ("C-M-S-<left>" . sp-forward-barf-sexp)
+
+          ("C-M-]" . sp-unwrap-sexp)
+          ("C-M-[" . sp-backward-unwrap-sexp)
+          ("C-M-r" . sp-rewrap-sexp)
+
+          ("C-M-j" . sp-join-sexp)
+          ("C-M-s" . sp-split-sexp)
+
+          ("C-M-t" . sp-transpose-sexp)
+
+          ("C-M-k" . sp-kill-sexp)
+          ("C-M-w" . sp-copy-sexp)
+          ("C-M-<backspace>" . sp-backward-delete-sexp)
+          ("C-M-<delete>" . sp-delete-sexp)
+          ("C-M-d" . sp-delete-sexp)
+
+          ("C-S-f" . sp-forward-symbol)
+          ("C-S-b" . sp-backward-symbol)
+          ("C-S-k" . sp-kill-symbol)
+          ("C-S-<backspace>" . sp-backward-delete-symbol)
+          ("C-S-<delete>" . sp-delete-symbol)
+          ("C-S-d" . sp-delete-symbol)))
+#+end_src
+
+*** aggressive-indent
+
+#+begin_src emacs-lisp
+  (use-package aggressive-indent
+
+    :hook
+    (prog-mode . aggressive-indent-mode)
+
+    :custom
+    (aggressive-indent-sit-for-time 5.0))
+#+end_src
+
+*** rainbow-delimitters
+
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+
+    :hook
+    (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
+*** ethan-wspaces
+
+#+begin_src emacs-lisp
+  ;; (use-package ethan-wspace
+
+  ;;   :config
+  ;;   (setq mode-require-final-newline nil)
+  ;;   (enable global-ethan-wspace-mode))
+#+end_src
+
+** Syntax checking
+
+*** flycheck
+
+#+begin_src emacs-lisp
+  (use-package flycheck
+
+    :init
+    (enable global-flycheck-mode))
+#+end_src
+
+** Language server protocol
+
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+
+    :after
+    (direnv)
+
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+
+    :config
+    (advice-add 'lsp :before #'direnv-update-environment)
+
+    :hook
+    (lsp-mode . lsp-enable-which-key-integration)
+
+    :custom
+    (lsp-keymap-prefix "C-c l")
+    (lsp-completion-provider :none)
+    (lsp-diagnostics-provider :flycheck)
+    (lsp-keep-workspace-alive nil)
+    (lsp-completion-enable t)
+    (lsp-completion-enable-additional-text-edit t)
+    (lsp-completion-show-kind t)
+    
+    :commands lsp)
+
+
+  (use-package lsp-completion
+
+    :ensure nil
+    :no-require t
+
+    :hook
+    (lsp-mode . lsp-completion-mode))
+
+
+  (use-package lsp-ui
+
+    :after
+    (lsp-mode)
+
+    :bind
+    ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+    ([remap xref-find-references] . lsp-ui-peek-find-references)
+
+    :commands lsp-ui-mode)
+
+
+  (use-package lsp-treemacs
+
+    :after
+    (lsp-mode
+     treemacs)
+
+    :custom
+    (lsp-treemacs-sync-mode t)
+
+    :commands lsp-treemacs-errors-list)
+
+
+  (use-package dap-mode
+
+    :after
+    (lsp-mode)
+
+    :config
+    (enable dap-mode)
+    (enable dap-ui-mode)
+    (enable dap-ui-controls-mode)
+    (enable dap-auto-configure-mode))
+#+end_src
+
+** Treesit
+#+begin_src emacs-lisp
+  (use-package treesit-auto
+
+    :custom
+    (treesit-auto-install 'prompt)
+    (treesit-language-source-alist '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+                                     (c "https://github.com/tree-sitter/tree-sitter-c")
+                                     (clojure "https://github.com/clojure-emacs/clojure-ts-mode")
+                                     (cmake "https://github.com/uyha/tree-sitter-cmake")
+                                     (common-lisp "https://github.com/theHamsta/tree-sitter-commonlisp")
+                                     (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+                                     (css "https://github.com/tree-sitter/tree-sitter-css")
+                                     (csharp "https://github.com/tree-sitter/tree-sitter-c-sharp")
+                                     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+                                     (go "https://github.com/tree-sitter/tree-sitter-go")
+                                     (go-mod "https://github.com/camdencheek/tree-sitter-go-mod")
+                                     (html "https://github.com/tree-sitter/tree-sitter-html")
+                                     (js . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src"))
+                                     (json "https://github.com/tree-sitter/tree-sitter-json")
+                                     (lua "https://github.com/Azganoth/tree-sitter-lua")
+                                     (make "https://github.com/alemuller/tree-sitter-make")
+                                     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+                                     (python "https://github.com/tree-sitter/tree-sitter-python")
+                                     (r "https://github.com/r-lib/tree-sitter-r")
+                                     (rust "https://github.com/tree-sitter/tree-sitter-rust")
+                                     (toml "https://github.com/tree-sitter/tree-sitter-toml")
+                                     (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
+                                     (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
+                                     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+    :config
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
+#+end_src
+
+** Languages
+
+*** Clojure
+
+#+begin_src emacs-lisp
+  (use-package clojure-mode
+
+    :hook
+    (clojure-mode . lsp)
+    (clojurescript-mode . lsp)
+    (clojurec-mode . lsp))
+
+
+  (use-package cider
+
+    :after
+    (clojure-mode)
+
+    :config
+    (add-to-list 'auto-mode-alist '("\\.repl\\'" . clojure-mode))
+
+    :hook
+    (clojure-mode . cider-mode)
+    (cider-mode . cider-enable-flex-completion)
+    (before-save . (lambda ()
+                     (clojure-sort-ns)
+                     (cider-format-buffer)))
+    (cider-mode . turn-on-smartparens-strict-mode)
+    (cider-repl-mode . turn-on-smartparens-strict-mode)
+    (eval-expression-minibuffer-setup . eldoc-mode)
+    (eval-expression-minibuffer-setup . turn-on-smartparens-strict-mode)
+
+    :custom
+    (cider-enrich-classpath t)
+    (cider-save-file-on-load t)
+    (nrepl-log-messages t)
+    (cider-special-mode-truncate-lines nil)
+    (cider-font-lock-dynamically '(macro core function var deprecated))
+    (cider-eldoc-display-context-dependent-info t)
+    (cider-print-fn 'pr)
+    (cider-overlays-use-font-lock t)
+    (cider-repl-history-file (expand-file-name ".cider-repl-history" "~"))
+
+    :bind
+    (:map cider-repl-mode-map
+          ("<return>" . cider-repl-newline-and-indent)
+          ("C-<return>" . cider-repl-return)))
+
+
+  (use-package flycheck-clojure
+
+    :after
+    (flycheck
+     cider)
+
+    :commands
+    (flycheck-clojure-setup)
+
+    :hook
+    (after-init . global-flycheck-mode)
+    (cider-mode . (lambda ()
+                    (setq next-error-function #'flycheck-next-error-function))))
+
+
+  (use-package clj-refactor
+
+    :after
+    (clojure-mode)
+
+    :hook
+    (clojure-mode . clj-refactor-mode))
+
+
+  (use-package hugsql-ghosts :disabled
+
+    :hook
+    (cider-mode . hugsql-ghosts-install))
+#+end_src
+
+*** Python
+
+#+begin_src emacs-lisp
+  (use-package python
+
+    :pin manual
+
+    :custom
+    (python-shell-interpreter "uv run ipython")
+    (python-shell-interpreter-args "-i --simple-prompt --InteractiveShell.display.page=True")
+    (add-to-list 'python-shell-completion-native-disables-interpreters "ipython"))
+
+
+  (use-package ipython-shell-send)
+
+
+  (use-package uv-mode
+
+    :hook
+    (python-mode . uv-mode-auto-activate-hook))
+
+
+  (use-package lsp-pyright
+
+    :hook
+    (python-mode . (lambda ()
+                     (require 'lsp-pyright)
+                     (lsp))))
+#+end_src
+
+*** Lua
+#+begin_src emacs-lisp
+  (use-package lua-mode
+
+    :custom
+    (lua-indent-level 2))
+#+end_src
+
+*** Nix
+#+begin_src emacs-lisp
+  (use-package nix-mode
+
+    :mode "\\.nix\\'"
+
+    ;; :hook
+    ;; (nix-mode . lsp)
+    )
+#+end_src
+
+*** Docker
+
+#+begin_src emacs-lisp
+  (use-package docker)
+
+
+  (use-package dockerfile-mode
+
+    :config
+    (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode)))
+
+
+  (use-package docker-compose-mode
+
+    :config
+    (add-to-list 'auto-mode-alist '("docker-compose.yml" . docker-compose-mode)))
+#+end_src
+
+*** Lilypond
+#+begin_src emacs-lisp
+  (use-package lilypond-mode
+
+    :load-path
+    "/usr/share/emacs/site-lisp"
+
+    :mode
+    ("\\.ly\\'" . LilyPond-mode)
+
+    :hook
+    (LilyPond-mode . smartparens-mode)
+    (LilyPond-mode . (lambda ()
+                       (disable company-mode))))
+#+end_src
+
+*** Markdown
+
+#+begin_src emacs-lisp
+  (use-package markdown-mode
+
+    :mode
+    ("READEME\\.md\\'" . gfm-mode)
+
+    :init
+    (setq markdown-command "markdown"))
+#+end_src
+
+*** PKGBUILD
+
+#+begin_src emacs-lisp
+  (use-package pkgbuild-mode
+
+    :mode
+    "/PKGBUILD$"
+
+    :custom
+    (pkgbuild-makepkg-command "makepkg -m -c -f")
+    (pkgbuild-update-sums-on-save t)
+
+    :config
+    (autoload 'pkgbuild-mode "pkgbuild-mode.el" "PKGBUILD mode." t))
+#+end_src
+
+*** yaml
+
+#+begin_src emacs-lisp
+  (use-package yaml)
+
+  (use-package yaml-pro)
+#+end_src
+
+* Load other config files
+#+begin_src emacs-lisp
+  (load-file "/home/marcel/.config/emacs/only-display-compile-on-error.el")
+#+end_src

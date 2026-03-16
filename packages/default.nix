@@ -4,7 +4,7 @@
   imports = [
     ./calibre.nix
     ./direnv.nix
-    ./emacs.nix
+    ./emacs
     ./firefox.nix
     ./git.nix
     ./gnupg.nix
