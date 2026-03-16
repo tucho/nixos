@@ -20,7 +20,7 @@
       username = "marcel";
       homeDirectory = "/home/marcel";
       packages = with pkgs; [];
-      stateVersion = "24.05";
+      stateVersion = "26.05";
     };
 
     xdg = {
