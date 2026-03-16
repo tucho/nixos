@@ -3,6 +3,7 @@
 {
   environment.systemPackages = [
     pkgs.emacs
+    pkgs.gcc
   ];
 
   home-manager.users.marcel = {
