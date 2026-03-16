@@ -54,7 +54,7 @@
 
         bind =
           [
-            "SUPER, RETURN, exec, uwsm app -- kitty.desktop"
+            "SUPER, RETURN, exec, uwsm app -- org.wezfurlong.wezterm.desktop"
             "SUPER, E, exec, uwsm app -- emacsclient.desktop"
             "SUPER, F, exec, uwsm app -- firefox.desktop"
             "SUPER, D, exec, uwsm app -- rofi.desktop"
@@ -130,7 +130,14 @@
       };
     };
 
-    programs.kitty.enable = true;
+    programs.wezterm = {
+      enable = true;
+      extraConfig = ''
+        return {
+          hide_tab_bar_if_only_one_tab = true
+        }
+      '';
+    };
 
     programs.rofi = {
       enable = true;
