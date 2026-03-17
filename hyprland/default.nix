@@ -10,22 +10,15 @@
 
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
-    pkgs.kdePackages.xdg-desktop-portal-kde
   ];
 
   programs.uwsm.enable = true;
 
-  services.displayManager.sddm = {
+  services.displayManager.ly = {
     enable = true;
-    package = pkgs.kdePackages.sddm;
-    wayland.enable = true;
-    theme = "sddm-astronaut-theme";
-    extraPackages = with pkgs; [
-      sddm-astronaut
-      kdePackages.qtbase
-      kdePackages.qtwayland
-      kdePackages.qtmultimedia
-    ];
+    settings = {
+      animation = "gameoflife";
+    };
   };
   
   home-manager.users.marcel = {
@@ -219,10 +212,6 @@
   
   environment.systemPackages = with pkgs; [
     pwvucontrol
-    sddm-astronaut
-    kdePackages.qtbase
-    kdePackages.qtwayland
-    kdePackages.qtmultimedia
   ];
 
   services.blueman.enable = true;
