@@ -45,7 +45,8 @@
           allow-loopback-pinentry
         '';
         sshKeys = [
-          "E7B465E1FA43A0A040C812CC35F8E03AFAA0BDAB"
+        "E7B465E1FA43A0A040C812CC35F8E03AFAA0BDAB"
+        "278B4B39590598BE305B0E372B88C19743DDEAD8"
         ];
       };
     };
