@@ -5,14 +5,11 @@
     enable = true;
     package = pkgs.hyprland;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
-    withUWSM = true;
   };
 
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
   ];
-
-  programs.uwsm.enable = true;
 
   services.displayManager.ly = {
     enable = true;
@@ -22,24 +19,23 @@
   };
   
   home-manager.users.marcel = {
-    xdg.configFile."uwsm/env".text =
-      ''
-      export LIBVA_DRIVER_NAME=nvidia
-      export XDG_SESSION_TYPE,wayland
-      export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      export GBM_BACKEND,nvidia-drm
-      export NVD_BACKEND=direct
-      '';
-
-    xdg.configFile."uwsm/env-hyprland".text =
-      ''
-      export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
-      '';
-
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.enable = false;
+      systemd = {
+        enable = true;
+        variables = [
+          "--all"
+        ];
+      };
       settings = {
+        env = [
+          "GBM_BACKEND,nvidia-drm"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "NVD_BACKEND,direct"
+          "AQ_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0"
+        ];
+        
         monitor = [
           "eDP-1, 1920x1080, 0x0, 1"
           "HDMI-A-2, 1920x1080, 1920x0, 1"
@@ -47,13 +43,13 @@
 
         bind =
           [
-            "SUPER, RETURN, exec, uwsm app -- org.wezfurlong.wezterm.desktop"
-            "SUPER, E, exec, uwsm app -- emacsclient.desktop"
-            "SUPER, F, exec, uwsm app -- firefox.desktop"
-            "SUPER, D, exec, uwsm app -- rofi.desktop"
-            "SUPER, Y, exec, uwsm app -- yazi.desktop"
+            "SUPER, RETURN, exec, wezterm"
+            "SUPER, E, exec, emacsclient -c"
+            "SUPER, F, exec, firefox"
+            "SUPER, D, exec, rofi -show"
+            "SUPER, Y, exec, wezterm -e yazi"
             "SUPER SHIFT, Q, killactive"
-            "SUPER SHIFT, END, exec, uwsm stop"
+            "SUPER SHIFT, END, exec, hyprctl dispatch exit"
 
             # Move focus with SUPER + arrow keys
             "SUPER, LEFT, movefocus, l"
