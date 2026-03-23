@@ -17,7 +17,6 @@
         ./boot
         ./fonts
         ./hardware
-        ./hyprland
         ./localization
         ./misc
         ./networking
