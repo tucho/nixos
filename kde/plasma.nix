@@ -7,7 +7,13 @@
     tuned.enable = true;
   };
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    discover
-  ];
+  environment = {
+    plasma6.excludePackages = with pkgs.kdePackages; [
+      discover
+    ];
+
+    systemPackages = with pkgs; [
+      klassy
+    ];
+  };
 }
