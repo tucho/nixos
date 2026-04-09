@@ -19,7 +19,6 @@
     ./steam.nix
     ./tor-browser.nix
     ./tree.nix
-    ./yazi.nix
     ./zsh.nix
   ];
 }
