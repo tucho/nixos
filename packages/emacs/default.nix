@@ -14,10 +14,9 @@
         startWithUserSession = "graphical";
       };
     };
-    xdg.configFile = {
-      "emacs/init.el".source = ./config/emacs/init.el;
-      "emacs/config.org".source = ./config/emacs/config.org;
-      "emacs/only-display-compile-on-error.el".source = ./config/emacs/only-display-compile-on-error.el;
+    xdg.configFile."emacs" = {
+      source = ./config/emacs;
+      recursive = true;
     };
   };
 }
