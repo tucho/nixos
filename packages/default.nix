@@ -9,7 +9,6 @@
     ./git.nix
     ./gnucash.nix
     ./gnupg.nix
-    ./homebank.nix
     ./htop.nix
     ./latex.nix
     ./libreoffice.nix
