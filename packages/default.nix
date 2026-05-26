@@ -7,6 +7,7 @@
     ./emacs
     ./firefox.nix
     ./git.nix
+    ./gnucash.nix
     ./gnupg.nix
     ./homebank.nix
     ./htop.nix
