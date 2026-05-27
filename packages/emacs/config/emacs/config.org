@@ -1092,17 +1092,12 @@ org-bullets gives us attractive bullets rather than asterisks.
 *** Lilypond
 #+begin_src emacs-lisp
   (use-package lilypond-mode
-
+    
     :load-path
     "/usr/share/emacs/site-lisp"
-
+    
     :mode
-    ("\\.ly\\'" . LilyPond-mode)
-
-    :hook
-    (LilyPond-mode . smartparens-mode)
-    (LilyPond-mode . (lambda ()
-                       (disable company-mode))))
+    "\\.\\(ly\\|ily\\)$")
 #+end_src
 
 *** Markdown
