@@ -3,6 +3,7 @@
 {
   imports = [
     ./calibre.nix
+    ./devenv.nix
     ./direnv.nix
     ./emacs
     ./firefox.nix
