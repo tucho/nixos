@@ -22,6 +22,7 @@
     ./steam.nix
     ./tor-browser.nix
     ./tree.nix
+    ./virt-manager.nix
     ./zsh.nix
   ];
 }
