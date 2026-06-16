@@ -61,6 +61,7 @@
     - [[Lua][Lua]]
     - [[Nix][Nix]]
     - [[Docker][Docker]]
+    - [[Terraform][Terraform]]
     - [[Lilypond][Lilypond]]
     - [[Markdown][Markdown]]
     - [[PKGBUILD][PKGBUILD]]
@@ -1087,6 +1088,12 @@ org-bullets gives us attractive bullets rather than asterisks.
 
     :config
     (add-to-list 'auto-mode-alist '("docker-compose.yml" . docker-compose-mode)))
+#+end_src
+
+*** Terraform
+
+#+begin_src emacs-lisp
+  (use-package terraform-mode)
 #+end_src
 
 *** Lilypond
