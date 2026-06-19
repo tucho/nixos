@@ -6,21 +6,21 @@
       ssh = {
         enable = true;
         enableDefaultConfig = false;
-        matchBlocks = {
+        settings = {
           "*" = {
-            match = ''
-              host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"
+            header = ''
+              Match host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"
             '';
-            forwardAgent = false;
-            addKeysToAgent = "no";
-            compression = false;
-            serverAliveInterval = 0;
-            serverAliveCountMax = 3;
-            hashKnownHosts = false;
-            userKnownHostsFile = "~/.ssh/known_hosts";
-            controlMaster = "no";
-            controlPath = "~/.ssh/master-%r@%n:%p";
-            controlPersist = "no";
+            AddKeysToAgent = "no";
+            Compression = false;
+            ControlMaster = "no";
+            ControlPath = "~/.ssh/master-%r@%n:%p";
+            ControlPersist = "no";
+            ForwardAgent = false;
+            HashKnownHosts = false;
+            ServerAliveCountMax = 3;
+            ServerAliveInterval = 0;
+            UserKnownHostsFile = "~/.ssh/known_hosts";
           };
         };
       };
