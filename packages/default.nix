@@ -17,10 +17,10 @@
     ./latex.nix
     ./libreoffice.nix
     ./lilypond.nix
+    ./modern-cli.nix
     ./musescore.nix
     ./nix-index.nix
     ./nvtop.nix
-    ./ripgrep.nix
     ./ssh.nix
     ./steam.nix
     ./tor-browser.nix
