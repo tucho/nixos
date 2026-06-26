@@ -14,6 +14,7 @@
 
     systemPackages = with pkgs; [
       klassy
+      kwin-script-geometry-change
     ];
   };
 }
