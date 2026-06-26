@@ -6,6 +6,7 @@
     ./devenv.nix
     ./direnv.nix
     ./discord.nix
+    ./docker.nix
     ./emacs
     ./firefox.nix
     ./git.nix
