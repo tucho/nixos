@@ -36,6 +36,7 @@
         videos = "${config.home-manager.users.marcel.home.homeDirectory}/videos";
 
         desktop = "${config.home-manager.users.marcel.home.homeDirectory}/.desktop";
+        projects = "${config.home-manager.users.marcel.home.homeDirectory}/.projects";
         publicShare = "${config.home-manager.users.marcel.home.homeDirectory}/.public";
         templates = "${config.home-manager.users.marcel.home.homeDirectory}/.templates";
       };
