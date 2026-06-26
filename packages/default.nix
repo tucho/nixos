@@ -5,6 +5,7 @@
     ./calibre.nix
     ./devenv.nix
     ./direnv.nix
+    ./discord.nix
     ./emacs
     ./firefox.nix
     ./git.nix
