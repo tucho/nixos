@@ -9,6 +9,7 @@
     ./docker.nix
     ./emacs
     ./firefox.nix
+    ./gimp.nix
     ./git.nix
     ./gnucash.nix
     ./gnupg.nix
