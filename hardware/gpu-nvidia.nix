@@ -24,4 +24,5 @@
   services.xserver.videoDrivers = lib.mkDefault [
     "nvidia" # Load nvidia driver for Wayland too.
   ];
+  services.switcherooControl.enable = true;
 }
