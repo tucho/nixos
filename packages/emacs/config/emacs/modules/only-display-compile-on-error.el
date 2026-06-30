@@ -1,3 +1,11 @@
+;;; only-display-compile-on-errors.el --- Org mode -*- lexical-binding: t; -*-
+
+
+;;; Commentary:
+
+
+;;; Code:
+
 ;; see https://stackoverflow.com/questions/17659212/dont-display-compilation-buffer-in-emacs-until-the-process-exits-with-error-o
 
 (defun my-compile-finish (buffer outstr)
@@ -21,3 +29,11 @@
 (ad-activate 'compilation-start)
 
 (provide 'only-display-compile-on-error)
+
+
+;;; Footer:
+
+(provide 'only-display-compile-on-error)
+
+
+;;; only-display-compile-on-error.el ends here
