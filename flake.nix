@@ -17,7 +17,6 @@
         ./boot
         ./fonts
         ./hardware
-        ./kde
         ./localization
         ./misc
         ./networking
