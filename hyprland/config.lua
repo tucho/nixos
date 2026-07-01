@@ -120,3 +120,14 @@ hl.window_rule({
     border_size = 0,
     rounding    = 0,
 })
+
+
+---------------
+---- INPUT ----
+---------------
+
+hl.config({
+    input = {
+        follow_mouse = 2,
+    },
+})
