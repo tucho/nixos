@@ -57,3 +57,19 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
+
+----------------
+---- LAYOUT ----
+----------------
+
+-- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+hl.config({
+    general = {
+        layout = "master",
+    },
+
+    master = {
+        new_status = "slave",
+        new_on_active = "after",
+    },
+})
