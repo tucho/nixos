@@ -21,6 +21,42 @@
       };
     };
 
+    programs.waybar = {
+      enable = true;
+      systemd = {
+        enable = true;
+        targets = [
+          "hyprland-session.target"
+        ];
+      };
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "bottom";
+          height = 30;
+          output = [
+            "eDP-1"
+            "HDMI-A-2"
+          ];
+          modules-left = [
+            "hyprland/workspaces"
+            "hyprland/submap"
+            "wlr/taskbar"
+          ];
+          modules-center = [
+            "hyprland/window"
+          ];
+          modules-right = [
+            "battery"
+            "hyprland/language"
+            "bluetooth"
+            "network"
+            "clock"
+          ];
+        };
+      };
+    };
+
     programs.kitty.enable = true;
     services.hyprlauncher.enable = true;
   };
