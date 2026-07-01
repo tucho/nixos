@@ -58,6 +58,7 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
+
 ----------------
 ---- LAYOUT ----
 ----------------
@@ -71,5 +72,33 @@ hl.config({
     master = {
         new_status = "slave",
         new_on_active = "after",
+    },
+})
+
+
+-----------------------
+---- LOOK AND FEEL ----
+-----------------------
+
+-- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+hl.config({
+    general = {
+        gaps_in  = 5,
+        gaps_out = 10,
+
+        border_size = 2,
+
+        col = {
+            active_border   = "rgba(33ccffee)",
+            inactive_border = "rgba(595959aa)",
+        },
+    },
+
+    decoration = {
+        rounding       = 5,
+        rounding_power = 4,
+
+        dim_inactive = true,
+        dim_strength = 0.25,
     },
 })
