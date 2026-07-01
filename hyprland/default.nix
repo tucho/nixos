@@ -49,6 +49,7 @@
           modules-right = [
             "battery"
             "hyprland/language"
+            "wireplumber"
             "bluetooth"
             "network"
             "clock"
