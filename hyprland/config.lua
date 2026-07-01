@@ -129,5 +129,10 @@ hl.window_rule({
 hl.config({
     input = {
         follow_mouse = 2,
+
+        touchpad = {
+            natural_scroll = true,
+            tap_button_map = "lmr"
+        },
     },
 })
