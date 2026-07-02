@@ -3,6 +3,7 @@
 {
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     package = pkgs.hyprland;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
@@ -11,7 +12,6 @@
     wayland.windowManager.hyprland = {
       enable = true;
       package = null;
-      systemd.enable = true;
       configType = "lua";
       extraLuaFiles = {
         config = {
