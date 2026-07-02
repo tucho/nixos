@@ -8,6 +8,20 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
+  environment.systemPackages = [
+    pkgs.tuigreet
+  ];
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember-session --asterisks --time --time-format '%Y-%m-%d %H:%M:%S'";
+        user = "greeter";
+      };
+    };
+  };
+  
   home-manager.users.marcel = {
     wayland.windowManager.hyprland = {
       enable = true;
