@@ -59,5 +59,12 @@
     };
 
     programs.kitty.enable = true;
+    programs.rofi = {
+      enable = true;
+      modes = [
+        "drun"
+        "ssh"
+      ];
+    };
   };
 }
