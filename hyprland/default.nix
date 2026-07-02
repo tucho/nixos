@@ -59,6 +59,5 @@
     };
 
     programs.kitty.enable = true;
-    services.hyprlauncher.enable = true;
   };
 }
