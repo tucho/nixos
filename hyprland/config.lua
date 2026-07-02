@@ -23,8 +23,8 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal = "kitty"
-local menu     = "hyprlauncher"
+local terminal = "uwsm app -- kitty.desktop"
+local menu     = "uwsm app -- rofi.desktop"
 
 
 ---------------------
@@ -37,6 +37,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("uwsm app -- emacsclient.desktop"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
